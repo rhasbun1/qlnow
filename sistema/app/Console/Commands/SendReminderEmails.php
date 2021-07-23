@@ -134,19 +134,19 @@ class SendReminderEmails extends Command
 
       $para=[];
       $para[] = [
-        'Email' => "c.bastiasv@duocuc.cl",
-        'name' => "Carlos Ezequiel Bastias Valdes"
+               'Email' => "cbastias@spsgroup.cl",
+               'name' => "cbastias@spsgroup.cl"
       ];
 
   
 
-        $mj = new \Mailjet\Client('c189998f90a8e631ef61bdebb25de8bc','b98b35dd33194c6797b25e372664db71',true,['version' => 'v3.1']);
+      $mj = new \Mailjet\Client('c189998f90a8e631ef61bdebb25de8bc','b98b35dd33194c6797b25e372664db71',true,['version' => 'v3.1']);
         $body = [
           'Messages' => [
             [
               'From' => [
-                'Email' => "no-reply@soporteportal.cl",
-                'Name' => "no-reply@soporteportal.cl"
+                'Email' => "prueba@soporteportal.cl",
+                'Name' => "prueba@soporteportal.cl"
               ],
               'To' => $para,
               'Subject' => "Pedidos creados en los ultimos 30 minutos.",

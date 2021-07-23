@@ -57,8 +57,8 @@ class emailUrgente extends Command
       $mensaje="";
       $para=[];
       $para[] = [
-        'Email' => "c.bastiasv@duocuc.cl",
-        'name' => "Carlos Ezequiel Bastias Valdes"
+        'Email' => "cbastias@spsgroup.cl",
+        'name' => "cbastias@spsgroup.cl"
       ];
         foreach ($pedidos as $item) {
             if($tipoCorreo==5 && $item->idEstadoMail==5){
@@ -77,8 +77,8 @@ class emailUrgente extends Command
               'Messages' => [
                 [
                   'From' => [
-                    'Email' => "no-reply@soporteportal.cl",
-                    'Name' => "no-reply@soporteportal.cl"
+                    'Email' => "prueba@soporteportal.cl",
+                    'Name' => "prueba@soporteportal.cl"
                   ],
                   'To' => $para,
                   'Subject' => "Pedido urgente",
