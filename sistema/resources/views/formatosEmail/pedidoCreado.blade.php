@@ -10,7 +10,7 @@
   <body>
   	<h3>QL-NOW INFORMA</h3>
 
-  	<h4>Estimados, Se informa que los siguientes pedidos no estan HABILITADOS<br><br>
+  	<h4>{{$tipo}}<br><br>
  
         @component('mail::table')
         | Nº Pedido | Cliente |

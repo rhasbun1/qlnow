@@ -307,7 +307,7 @@
                 @if($despachado==0 && $pedido[0]->idEstadoPedido==0)
                     <button class="btn btn-sm btn-danger" onclick="abrirCajaSuspender();">Suspender</button>
                 @endif    
-                @if($despachado==0 && $pedido[0]->idEstadoPedido==-1 && ((Session::get('idPerfil')=='5' or Session::get('idPerfil')=='6')))
+                @if($despachado==0 && $pedido[0]->idEstadoPedido==-1 && ((Session::get('idPerfil')=='2' or Session::get('idPerfil')=='4' or Session::get('idPerfil')=='3' or Session::get('idPerfil')=='18' or Session::get('idPerfil')=='14')))
                     <button class="btn btn-sm btn-danger" onclick="pasarHistorico();">Pasar a Histórico</button>
                 @endif                                 
             @endif
@@ -649,7 +649,7 @@
                     return;            
                   }
                 }
-                if(tabla.rows[i].cells[4].getElementsByTagName('input')[0].value.trim().replace(".", "")>parseInt(tabla.rows[i].cells[3].innerHTML)){
+                if(tabla.rows[i].cells[4].getElementsByTagName('input')[0].value.trim().replace(".", "")>parseInt(tabla.rows[i].cells[3].innerHTML.trim().replace(".", ""))){
                         swal(
                         {
                             title: 'La cantidad pedida no puede ser mayor a la solicitada',

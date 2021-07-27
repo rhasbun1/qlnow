@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Mail\ReminderEmailDigest;
-use App\Mail\enviarMailPedidoCreado;
+use App\Mail\PedidosUrgentes;
 use \Mailjet\Resources;
 
 class emailUrgente extends Command
@@ -48,48 +48,28 @@ class emailUrgente extends Command
                 $i
             ));
               if(!empty($pedidosCreadosUrgente)){
-                $this->test($pedidosCreadosUrgente,$i);
+                $this->emailPedidoCreado($pedidosCreadosUrgente,$i);
               }
         }
     }
 
-    public function test($pedidos,$tipoCorreo){
-      $mensaje="";
-      $para=[];
-      $para[] = [
-        'Email' => "cbastias@spsgroup.cl",
-        'name' => "cbastias@spsgroup.cl"
-      ];
+     private function emailPedidoCreado($pedidos,$tipoCorreo)
+    {
+        $usuario = "cbastias@spsgroup.cl";
         foreach ($pedidos as $item) {
-            if($tipoCorreo==5 && $item->idEstadoMail==5){
-            $mensaje="<h2>El pedido ".$item->idPedido." esta atrasado para el cliente ".$item->emp_nombre."</h2>";
+          if($tipoCorreo==5 && $item->idEstadoMail==5){
+            $mensaje="El pedido ".$item->idPedido." esta atrasado para el cliente ".$item->emp_nombre;
             }elseif($tipoCorreo==6 && $item->idEstadoMail==6){
-              $mensaje="<h2>Se ha suspendido el pedido".$item->idPedido." para el cliente ".$item->emp_nombre." por el motivo ".$item->motivo."</h2>";
+              $mensaje="Se ha suspendido el pedido ".$item->idPedido." para el cliente ".$item->emp_nombre." por el motivo ".$item->motivo;
             }elseif($tipoCorreo==7 && $item->idEstadoMail==7){
-              $mensaje="<h2>Se ha modificado el pedido".$item->idPedido." para el cliente ".$item->emp_nombre." por el motivo ".$item->motivo."<h2>";
+              $mensaje="Se ha modificado el pedido ".$item->idPedido." para el cliente ".$item->emp_nombre." por el motivo ".$item->motivo;
             }elseif($tipoCorreo==8 && $item->idEstadoMail==8){
-              $mensaje="<h2>Se ha registrado la salida del Pedido ".$item->idPedido." perteneciente al cliente".$item->emp_nombre."</h2>";
+              $mensaje="Se ha registrado la salida del Pedido ".$item->idPedido." perteneciente al cliente".$item->emp_nombre;
             }elseif($tipoCorreo==9 && $item->idEstadoMail==9){
-              $mensaje="<h2>Se ha suspendido el pedido ".$item->idPedido." para el cliente ".$item->emp_nombre." por el motivo ".$item->motivo."</h2>";
+              $mensaje="Se ha pasado a historico el pedido ".$item->idPedido." para el cliente ".$item->emp_nombre." por el motivo ".$item->motivo;
             }
-            $mj = new \Mailjet\Client('c189998f90a8e631ef61bdebb25de8bc','b98b35dd33194c6797b25e372664db71',true,['version' => 'v3.1']);
-            $body = [
-              'Messages' => [
-                [
-                  'From' => [
-                    'Email' => "prueba@soporteportal.cl",
-                    'Name' => "prueba@soporteportal.cl"
-                  ],
-                  'To' => $para,
-                  'Subject' => "Pedido urgente",
-                  'TextPart' => "Pedidos",
-                  'HTMLPart' => $mensaje,
-                  'CustomID' => "AppGettingStartedTest"
-                ]
-              ]
-            ];
-            $response = $mj->post(Resources::$Email, ['body' => $body]);
-            $response->success() && var_dump($response->getData());
-      }
-     }
+
+          Mail::to($usuario)->send(new PedidosUrgentes($mensaje));
+        }
+    }
 }

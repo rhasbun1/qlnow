@@ -350,7 +350,10 @@
                     @endif
 
                 @endif
-            @endif    
+            @endif
+            @if( $pedido[0]->idEstadoPedido==7 and (Session::get('idPerfil')=='5' or Session::get('idPerfil')=='6' or Session::get('idPerfil')=='7'))
+                <button id="btnHistorico" class="btn btn-sm btn-danger" onclick="pasarHistorico();">Cerrar Pedido</button>
+            @endif 
 
             <a href="{{ asset('/') }}programacion" class="btn btn-sm btn-warning" style="width:80px">Atrás</a>         
         </div> 
@@ -634,7 +637,7 @@
                     return;            
                   }
                 }
-                if(tabla.rows[i].cells[4].getElementsByTagName('input')[0].value.trim().replace(".", "")>parseInt(tabla.rows[i].cells[3].innerHTML)){
+                if(tabla.rows[i].cells[4].getElementsByTagName('input')[0].value.trim().replace(".", "")>parseInt(tabla.rows[i].cells[3].innerHTML.trim().replace(".", ""))){
                         swal(
                         {
                             title: 'La cantidad pedida no puede ser mayor a la solicitada',

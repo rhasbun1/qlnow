@@ -15,7 +15,7 @@ class enviarMailPedidoCreado extends Mailable implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     protected $pedido;
-    
+    protected $tipo;
 
     /**
      * Create a new message instance.
@@ -25,12 +25,13 @@ class enviarMailPedidoCreado extends Mailable implements ShouldQueue
     public function store(Request $request)
     {
         $pedido = $request->idPedido;      
+        $tipo = $request->tipo;      
     }
 
     public function __construct($pedido,$tipo)
     {
         $this->pedido = $pedido;
-        
+        $this->tipo = $tipo;
     }
 
     /**
@@ -40,6 +41,6 @@ class enviarMailPedidoCreado extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->markdown('formatosEmail.pedidoCreado')->with('pedido', $this->pedido);
+        return $this->markdown('formatosEmail.pedidoCreado')->with('pedido', $this->pedido)->with('tipo', $this->tipo);
     }
 }
