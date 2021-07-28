@@ -144,9 +144,9 @@ class ProductoController extends Controller
         $datos=DB::Select('call spInsRegistroUpload(?,?,?,?,?)', array( 1, Session::get('idUsuario'), $data->input("observaciones"), $data->input("ano"), $data->input("mes") ) );
         $archivo=$data->file("upload-demo");
         $nombreArchivo= "file_".strval($datos[0]->idRegistroUpload).".csv";
-        //Storage::disk('costos')->put($nombreArchivo, \File::get( $archivo) );
-        $nombrePdf=public_path().'/costos/file_'.strval($datos[0]->idRegistroUpload).'.csv';
-        file_put_contents($nombrePdf, \File::get( $archivo) );
+        \Storage::disk('costos')->put($nombreArchivo, \File::get( $archivo) );
+        //$nombrePdf=public_path().'/costos/file_'.strval($datos[0]->idRegistroUpload).'.csv';
+        //file_put_contents($nombrePdf, \File::get( $archivo) );
         $ruta= public_path('costos/'.$nombreArchivo);
         $linea = 0;
         //Abrimos nuestro archivo
