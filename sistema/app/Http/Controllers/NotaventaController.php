@@ -269,6 +269,11 @@ class NotaventaController extends Controller
 
     public function existeArchivo(Request $datos){
         if($datos->ajax()){
+            if ($datos->input('nombreArchivo') == ''){
+                return response()->json([
+                    "existe" => false
+                ]);
+            }
             $pathtoFile = public_path().'/ocompra/pedido/'.$datos->input('nombreArchivo');
             $exists = File::exists($pathtoFile);
             //$exists = Storage::disk($datos->input('carpeta'))->exists($datos->input('nombreArchivo'));
