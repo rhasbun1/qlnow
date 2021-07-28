@@ -71,7 +71,9 @@ class NotaventaController extends Controller
 
             if($idnotaventa[0]->nombreArchivo!=""){
                // $nombreArchivo= "OC".$idnotaventa[0]->idNotaVenta.".".$extension;
-                Storage::disk('ocnventa')->put($idnotaventa[0]->nombreArchivo, \File::get( $archivo) );
+                //Storage::disk('ocnventa')->put($idnotaventa[0]->nombreArchivo, \File::get( $archivo) );
+                $nombreArchivo_upload=public_path().'/ocompra/nventa/'.$idnotaventa[0]->nombreArchivo;
+                file_put_contents($nombreArchivo_upload, \File::get( $archivo) );
             }
 
 
@@ -90,7 +92,9 @@ class NotaventaController extends Controller
             if( File::exists(public_path('ocompra/nventa/'."OC".$datos->input('idNotaVenta').'.*'))){
                 File::delete(public_path('ocompra/nventa/'."OC".$datos->input('idNotaVenta').'.*'));
             }            
-            Storage::disk('ocnventa')->put($nombreArchivo, \File::get( $archivo) );
+            //Storage::disk('ocnventa')->put($nombreArchivo, \File::get( $archivo) );
+            $nombreArchivo_upload=public_path().'/ocompra/nventa/'.$nombreArchivo;
+            file_put_contents($nombreArchivo_upload, \File::get( $archivo) );
             $nv = Notaventa::find($datos->input('idNotaVenta'));
             $nv->nombreArchivoOC = $nombreArchivo;
             $nv->save();            
@@ -265,7 +269,9 @@ class NotaventaController extends Controller
 
     public function existeArchivo(Request $datos){
         if($datos->ajax()){
-            $exists = Storage::disk($datos->input('carpeta'))->exists($datos->input('nombreArchivo'));
+            $pathtoFile = public_path().'/ocompra/pedido/'.$datos->input('nombreArchivo');
+            $exists = File::exists($pathtoFile);
+            //$exists = Storage::disk($datos->input('carpeta'))->exists($datos->input('nombreArchivo'));
             return response()->json([
                 "existe" => $exists
             ]);                
