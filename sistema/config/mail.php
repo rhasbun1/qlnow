@@ -12,11 +12,11 @@ return [
     | your application here. By default, Laravel is setup for SMTP mail.
     |
     | Supported: "smtp", "sendmail", "mailgun", "mandrill", "ses",
-    |            "sparkpost", "log", "array"
+    |            "sparkpost", "postmark", "log", "array"
     |
     */
 
-    'driver' => env('MAIL_DRIVER', 'smtp'),
+    'driver' => env('MAIL_DRIVER', 'sendmail'),
 
     /*
     |--------------------------------------------------------------------------
@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'smtp.gmail.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -55,10 +55,10 @@ return [
     |
     */
 
-    'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
-    ],
+     'from' => [
+         'address' => env('MAIL_FROM_ADDRESS', 'contacto@spsgroup.cl'),
+         'name' => env('MAIL_FROM_NAME', 'Portal'),
+     ],
 
     /*
     |--------------------------------------------------------------------------
@@ -84,9 +84,13 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME'),
+     //'username' => env('MAIL_USERNAME '),
 
-    'password' => env('MAIL_PASSWORD'),
+     //'password' => env('MAIL_PASSWORD'),
+
+    'username' => 'contacto@spsgroup.cl',
+
+    'password' => '300Deltas#',
 
     /*
     |--------------------------------------------------------------------------
@@ -112,6 +116,8 @@ return [
     |
     */
 
+    'pretend' => false,
+
     'markdown' => [
         'theme' => 'default',
 
@@ -119,5 +125,6 @@ return [
             resource_path('views/vendor/mail'),
         ],
     ],
+
 
 ];

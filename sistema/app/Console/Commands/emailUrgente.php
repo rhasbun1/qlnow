@@ -55,7 +55,7 @@ class emailUrgente extends Command
 
      private function emailPedidoCreado($pedidos,$tipoCorreo)
     {
-        $usuario = "cbastias@spsgroup.cl";
+        $usuario = "rsoto@spsgroup.cl";
         foreach ($pedidos as $item) {
           if($tipoCorreo==5 && $item->idEstadoMail==5){
             $mensaje="El pedido ".$item->idPedido." esta atrasado para el cliente ".$item->emp_nombre;
