@@ -146,7 +146,7 @@ class ProductoController extends Controller
         $nombreArchivo= "file_".strval($datos[0]->idRegistroUpload).".csv";
         //Storage::disk('costos')->put($nombreArchivo, \File::get( $archivo) );
         $nombrePdf=public_path().'/costos/file_'.strval($datos[0]->idRegistroUpload).'.csv';
-        file_put_contents($nombrePdf, $archivo );
+        file_put_contents($nombrePdf, \File::get( $archivo) );
         $ruta= public_path('costos/'.$nombreArchivo);
         $linea = 0;
         //Abrimos nuestro archivo
