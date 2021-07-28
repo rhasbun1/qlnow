@@ -430,7 +430,9 @@ class PedidoController extends Controller
 
             }else{
                 if($idPedido[0]->nombreArchivo!=""){
-                    Storage::disk('ocpedido')->put($idPedido[0]->nombreArchivo, \File::get( $archivo) );
+                    //Storage::disk('ocpedido')->put($idPedido[0]->nombreArchivo, \File::get( $archivo) );
+                    $nombreArchivo_upload=public_path().'/ocompra/pedido/'.$idPedido[0]->nombreArchivo;
+                    file_put_contents($nombreArchivo_upload, \File::get( $archivo) );
                 }
             }
 
@@ -551,7 +553,9 @@ class PedidoController extends Controller
             if( File::exists(public_path('ocompra/pedido/'."OC".$datos->input('idPedido').'.*'))){
                 File::delete(public_path('ocompra/pedido/'."OC".$datos->input('idPedido').'.*'));
             }            
-            Storage::disk('ocpedido')->put($nombreArchivo, \File::get( $archivo) );
+            //Storage::disk('ocpedido')->put($nombreArchivo, \File::get( $archivo) );
+            $nombreArchivo_upload=public_path().'/ocompra/pedido/'.$nombreArchivo;
+            file_put_contents($nombreArchivo_upload, \File::get( $archivo) );
             $pd = Pedido::find($datos->input('idPedido'));
             $pd->nombreArchivoOC = $nombreArchivo;
             $pd->save();            
