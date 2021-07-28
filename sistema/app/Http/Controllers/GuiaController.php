@@ -483,8 +483,7 @@ class GuiaController extends Controller
         "_".$data->input("codigoProducto")."_RND".strval(random_int(1,100000)).".pdf";
 
 
-        $nombreArchivo_upload=public_path().'/certificados/'.$data->input("codigoTipoGuia").'_'.$data->input("numeroGuiaCertificado").
-            '_'.$data->input("codigoProducto").'_RND'.strval(random_int(1,100000)).'.pdf';
+        $nombreArchivo_upload=public_path().'/certificados/'.$nombreArchivo;
         file_put_contents($nombreArchivo_upload, \File::get( $archivo) );
 
         DB::Select('call spUpdArchivoCertificado(?,?,?,?,?,?)', array( $data->input('codigoTipoGuia'), $data->input('numeroGuiaCertificado'), $data->input("codigoProducto"), $nombreArchivo, Session::get('idUsuario'), '' ) );
