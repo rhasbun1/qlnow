@@ -5,6 +5,7 @@
     var valorFleteFalso;
     var tiempoProduccion_val =new Array();
     var arrFeriados =new Array();
+    var mensajeFlete=1;
 
     $(document).ready(function() {
         // Datepicker      
@@ -21,6 +22,7 @@
         document.getElementById('tipoTransporte').selectedIndex=-1;
         $("#cantidadFleteFalso").val("0");
         $("#valorFleteFalso").val("0");
+        $("#mensajeFlete").val("1");
         $.ajax({
             async:false, 
             url: urlApp + 'productosCodigosSoftland',
@@ -870,6 +872,46 @@
                 }
             }
 
+            if(mensajeFlete>0){
+                if($("#tipoCarga").val()=="1" && $("#tipoTransporte").val()=='1'){                  
+                    if( (toneladas) < cmtten){
+                        swal(
+                            {
+                                title: 'Advertencia esta creando un pedido con una carga menor a la maxima (' + (cmtten) +' toneladas)',
+                                text: '',
+                                type: 'warning',
+                                showCancelButton: false,
+                                confirmButtonText: 'ENTENDIDO',
+                                cancelButtonText: '',
+                                closeOnConfirm: true,
+                                closeOnCancel: false
+                            }
+                        )
+                        mensajeFlete=0;
+                        $("#btnCrearPedido").attr("disabled", false);
+                        return;                 
+                    }
+                }if($("#tipoCarga").val()=="1" && $("#tipoTransporte").val()=='2'){
+                    if( (toneladas) < (cmttem1+cmttem2) ){
+                        swal(
+                            {
+                                title: 'Advertencia esta creando un pedido con una carga menor a la maxima (' + (cmttem1+cmttem2) +' toneladas)',
+                                text: '',
+                                type: 'warning',
+                                showCancelButton: false,
+                                confirmButtonText: 'OK',
+                                cancelButtonText: '',
+                                closeOnConfirm: true,
+                                closeOnCancel: false
+                            }
+                        )
+                        mensajeFlete=0;
+                        $("#btnCrearPedido").attr("disabled", false);
+                        return;                 
+                    }
+                }      
+
+            }
 
             if(valorFleteFalso>0){
 

@@ -43,19 +43,21 @@ class emailUrgente extends Command
      */
     public function handle()
     {
+      $usuarios = ["raisotoprogra@gmail.com","cbastias@spsgroup.cl"];
+      foreach($usuarios as $item){
         for ($i = 5; $i <= 9; $i++) {
             $pedidosCreadosUrgente = DB::Select('call spGetPedidosCorreoUrgente(?)',array(
                 $i
             ));
               if(!empty($pedidosCreadosUrgente)){
-                $this->emailPedidoCreado($pedidosCreadosUrgente,$i);
+                $this->emailPedidoCreado($pedidosCreadosUrgente,$i,$item);
               }
         }
+      }
     }
 
-     private function emailPedidoCreado($pedidos,$tipoCorreo)
+     private function emailPedidoCreado($pedidos,$tipoCorreo,$usuario)
     {
-        $usuario = "rsoto@spsgroup.cl";
         foreach ($pedidos as $item) {
           if($tipoCorreo==5 && $item->idEstadoMail==5){
             $mensaje="El pedido ".$item->idPedido." esta atrasado para el cliente ".$item->emp_nombre;

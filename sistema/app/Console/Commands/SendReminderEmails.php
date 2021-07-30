@@ -44,21 +44,22 @@ class SendReminderEmails extends Command
      */
     public function handle()
     {
+      $usuarios = ["raisotoprogra@gmail.com","cbastias@spsgroup.cl"];
+      foreach($usuarios as $item){
         for ($i = 1; $i <= 4; $i++) {
           $pedidosCreados = DB::Select('call spGetPedidosCorreo(?)',array(
               $i
           ));
           if(!empty($pedidosCreados)){
-            $this->emailPedidoCreado($pedidosCreados,$i);
+            $this->emailPedidoCreado($pedidosCreados,$i,$item);
           }
+        }
       }
     }
 
 
-    private function emailPedidoCreado($pedido,$id)
+    private function emailPedidoCreado($pedido,$id,$usuario)
     {
-        $usuario = "cbastias@spsgroup.cl";
-
         if($id==1){
           $tipo="Hola xxxx, tienes nuevos pedidos para ser aprobados de crédito. Ingresa por favor a qlnow.quimicalatinoamericana.cl para gestionarlos";
         }elseif($id==2){
