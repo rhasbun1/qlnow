@@ -338,7 +338,7 @@
                     return;            
                   }
                 }
-                if(tabla.rows[i].cells[4].getElementsByTagName('input')[0].value.trim().replace(".", "")>parseInt(tabla.rows[i].cells[3].innerHTML)){
+               /* if(tabla.rows[i].cells[4].getElementsByTagName('input')[0].value.trim().replace(".", "")>parseInt(tabla.rows[i].cells[3].innerHTML)){
                         swal(
                         {
                             title: 'La cantidad pedida no puede ser mayor a la solicitada',
@@ -356,7 +356,7 @@
                         }
                         )
                         return; 
-                }
+                }*/
             }
 
             // Se recorre el DataTable para modificar la funcion abrirGuia con el nuevo número ingresado por el usuario
