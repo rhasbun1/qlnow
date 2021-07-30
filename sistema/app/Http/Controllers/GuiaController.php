@@ -95,7 +95,7 @@ class GuiaController extends Controller
 
     public function registrarSalidaDespacho(Request $datos){
         if($datos->ajax()){
-            $guia=DB::Select('call spGetRegistrarSalidaDespacho(?,?, ?)', array( $datos->input('tipoGuia'), $datos->input('numeroGuia'), Session::get('idUsuario') ) );
+            $guia=DB::Select('call spGetRegistrarSalidaDespacho(?,?,?)', array( $datos->input('tipoGuia'), $datos->input('numeroGuia'), Session::get('idUsuario') ) );
 
 
             //$this->avisoRegistrodeSalida($datos->input('numeroGuia'));
@@ -545,9 +545,11 @@ class GuiaController extends Controller
     public function bajarGuiaDespacho($numeroGuia){
       $pathtoFile = public_path().'/guias/pdf/GD'.$numeroGuia.'.pdf';
       $nombreArchivo = asset(env('CARPETA_PUBLIC_ASSET').'guias/pdf/GD'.$numeroGuia.'.pdf');
-      $result = File::exists($pathtoFile); 
+      $result = File::exists($pathtoFile);
       if($result){
             return view('verpdf')->with('nombreArchivo', $nombreArchivo);
+      }else{
+            return;
       }
     }
 
