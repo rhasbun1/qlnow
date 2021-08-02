@@ -18,7 +18,7 @@
   	        		Año
   	        	</div>
   	        	<div class="col-md-1">
-  	        		<input id="ano" class="form-control input-sm" maxlength="4">
+  	        		<input id="ano" class="form-control input-sm" maxlength="4" onkeypress="return isNumberKey(event)">
   	        	</div>
   	        	<div class="col-md-1">
   	        		Mes
@@ -105,6 +105,7 @@
             <div style="width: 80%">        
                 <table id="tablaProductos" class="table table-hover table-condensed table-responsive" style="width: 100%">
                     <thead>
+                      <tr>
                         <th style="width:120px">Producto</th>
                         <th style="width:60px">Unidad</th>
                         <th style="width:80px">Planta</th>
@@ -258,6 +259,8 @@
 
         var anoSel=0;
         var mesSel=0;
+        var excelMes;
+        var excelAno;
         var titulo="Esta es una prueba";
         var objCajaNumero;
      
@@ -265,8 +268,13 @@
         var btnExcel={
                         extend: 'excelHtml5',
                         text: '<i class="fa fa-file-excel-o"></i>',
-                        title: 'Costos',
-                        titleAttr: 'Excel',                           
+                        title: 'Costos'+excelAno,
+                        titleAttr: 'Excel',
+                        filename: function(){
+                            var a = excelAno;
+                            var m = excelMes;
+                            return 'Costos ' + m +'.'+a ;
+                        },                           
                         exportOptions: {
                             columns: [ 0, 1, 2, 4 ]
                         }
@@ -326,7 +334,8 @@
           formData.append("observaciones", "" );
           formData.append("ano", anoSel);
           formData.append("mes", mesSel );
-
+          
+          $("#modSubirArchivo").modal('hide');
           $("#mdProcesandoArchivoCostos").modal('show');       
           $.ajax({
               url: urlApp + "subirArchivoCostos",
@@ -381,6 +390,7 @@
 
         function abrirCuadroEspera(){
             $("#mdProcesando").modal('show');
+            $("#mdCostos").modal('hide');
         }
 
 
@@ -531,6 +541,9 @@
 
         	$("#anoSel").val(ano);
         	$("#mesSel").val(table.cell(fila,1).data());
+          excelAno=ano;
+          excelMes=table.cell(fila,1).data();
+          console.log(excelAno);
 
           if(parseInt(mes)<10){ 
                mm='0'+mes.toString();
@@ -608,7 +621,7 @@
 
         function formatoNumero(texto){
 
-          texto.value=new Intl.NumberFormat("de-DE").format( texto.value.replace('.','') );
+          texto.value=new Intl.NumberFormat("de-DE").format( texto.value.replace('.','').replace('.','') );
         }
 
 
@@ -678,6 +691,16 @@
                         ] ).draw().node();
 
                 nodo.dataset.nummes=$("#mes").val();
+                swal(
+                    {
+                        title: 'Costo Agregado Correctamente',
+                        type: 'success',
+                        showCancelButton: false,
+                        confirmButtonText: 'OK',
+                        cancelButtonText: 'NO',
+                        closeOnConfirm: true,
+                        closeOnCancel: false
+                    });
               }
             })			
 
@@ -708,7 +731,7 @@
 		    	if(tabla.cell(i,3).node().getElementsByTagName('input')[0].value==''){
 		    		costo="0";
 		    	}else{
-		    		costo=tabla.cell(i,3).node().getElementsByTagName('input')[0].value.replace('.','');
+		    		costo=tabla.cell(i,3).node().getElementsByTagName('input')[0].value.replace('.','').replace('.','');
 		    	}
 
           if( isNaN(costo) ){

@@ -802,7 +802,7 @@
             if( $("#nombreConductor").val().trim()=="" || $("#apellidoPaterno").val().trim()=="" || $("#rutConductor").val().trim()==""  ){
                 swal(
                     {
-                        title: '!El rut, nombre y apellido  paterno es obligatorio!',
+                        title: '¡El rut, nombre y apellido  paterno son obligatorio!',
                         text: '',
                         type: 'warning',
                         showCancelButton: false,
