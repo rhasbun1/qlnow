@@ -448,7 +448,7 @@
                       cerrarCajaGuia();
                       swal(
                         {
-                            title: 'Se Registro la Salida!' ,
+                            title: 'Se Registró la Salida!' ,
                             text: '',
                             type: 'success',
                             showCancelButton: false,

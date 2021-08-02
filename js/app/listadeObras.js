@@ -196,7 +196,7 @@
         })
         swal(
             {
-                title: 'Se Actualizo La Obra',
+                title: 'Se Actualizó La Obra',
                 text: '',
                 type: 'warning',
                 showCancelButton: false,

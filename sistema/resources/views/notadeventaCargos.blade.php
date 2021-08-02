@@ -20,7 +20,7 @@
                 </div>
                <div class="col-md-9" id="filtro" style="display: inline">
                 Filtro&nbsppor&nbspFecha&nbspCreación
-					<input id="fechaInicio" class="form-control input-sm date" style="display: inline; width: 140px" data-date-end-date="0d" >&nbsp&nbsp
+					<input id="fechaInicio" class="form-control input-sm date" style="display: inline; width: 140px" data-date-end-date="0d">&nbsp&nbsp
 					<input id="fechaTermino" class="form-control input-sm date" style="display: inline; width: 140px" data-date-end-date="0d">
                     <input type="button" class="btn btn-success btn-sm" style="display: inline;" onclick="resumenGeneral()" value="Buscar">
 				</div>

@@ -684,7 +684,7 @@
         if (errorPlantaFormaEntrega){
                 swal(
                     {
-                        title: 'Debe completar en todos las línea la Planta y Forma de Entrega',
+                        title: 'Debe completar en todas las líneas la Planta y Forma de Entrega',
                         text: '',
                         type: 'warning',
                         showCancelButton: false,
