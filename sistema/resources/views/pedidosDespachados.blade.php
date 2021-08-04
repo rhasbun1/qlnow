@@ -58,7 +58,7 @@
 		<div style="padding: 10px">
 			<table id="tablaPedidos" class="table table-hover table-condensed table-responsive" style="width: 100%">
 				<thead>
-					<th style="width:80px;text-align: right;">Nº de Pedido</th>
+					<th style="width:80px;">Nº de Pedido</th>
                     <th></th>
                     <th>Planta Origen</th>
                     <th style="width: 200px">Cliente</th>
@@ -155,10 +155,10 @@
                     var celdas=tabla.row( rowNode).data();
 
 			        var celda=tabla.cell(fila,0).node();
-			        $( celda ).css( 'text-align', 'right' ).css( 'width', '60px');
+			        $( celda ).css( 'text-align', 'center' ).css( 'width', '60px');
 
                     var celda=tabla.cell(fila,5).node();
-                    $( celda ).css( 'text-align', 'right' ).css( 'width', '60px');
+                    $( celda ).css( 'text-align', 'center' ).css( 'width', '60px');
 
 			    }
 			    tabla.draw();

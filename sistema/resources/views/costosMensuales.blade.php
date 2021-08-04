@@ -268,7 +268,7 @@
         var btnExcel={
                         extend: 'excelHtml5',
                         text: '<i class="fa fa-file-excel-o"></i>',
-                        title: 'Costos'+excelAno,
+                        title: 'Costos',
                         titleAttr: 'Excel',
                         filename: function(){
                             var a = excelAno;

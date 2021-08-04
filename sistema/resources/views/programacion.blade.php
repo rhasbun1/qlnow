@@ -72,7 +72,7 @@
                             </div>
                         </div>
                     </div>                
-                    <table id="tablaAprobados" class="table table-condensed">
+                    <table id="tablaAprobados" class="table table-condensed" style="width: 100%;">
                         <thead>
                             <th style="width:80px">Pedido</th>
                             <th style="width:120px"></th>

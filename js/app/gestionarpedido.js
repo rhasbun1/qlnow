@@ -877,7 +877,7 @@
                     if( (toneladas) < cmtten){
                         swal(
                             {
-                                title: 'Advertencia esta creando un pedido con una carga menor a la maxima (' + (cmtten) +' toneladas)',
+                                title: 'Advertencia está creando un pedido con una carga menor a la máxima(' + (cmtten) +' toneladas)',
                                 text: '',
                                 type: 'warning',
                                 showCancelButton: false,
@@ -895,7 +895,7 @@
                     if( (toneladas) < (cmttem1+cmttem2) ){
                         swal(
                             {
-                                title: 'Advertencia esta creando un pedido con una carga menor a la maxima (' + (cmttem1+cmttem2) +' toneladas)',
+                                title: 'Advertencia está creando un pedido con una carga menor a la máxima (' + cmttem1+" y "+cmttem2 +' toneladas)',
                                 text: '',
                                 type: 'warning',
                                 showCancelButton: false,

@@ -519,9 +519,10 @@ class GuiaController extends Controller
 
         $archivo=$data->file("upload-demo");
         $nombreArchivo=public_path().'/guias/pdf/GD'.$data->input("nuevoFolioDTE").'.pdf';
+        $nombreSinruta=$data->input("nuevoFolioDTE").'.pdf';
         file_put_contents($nombreArchivo, \File::get( $archivo) );
 
-        $guia=DB::Select('call spUpdArchivoGuiaPDF(?,?,?,?)', array( $data->input('numGuia'), $data->input('nuevoFolioDTE'), $nombreArchivo, Session::get('idUsuario') ) );
+        $guia=DB::Select('call spUpdArchivoGuiaPDF(?,?,?,?)', array( $data->input('numGuia'), $data->input('nuevoFolioDTE'), $nombreSinruta, Session::get('idUsuario') ) );
         $despacho=DB::Select('call spGetVerificaDespachoCompleto(?)', array($guia[0]->idPedido) );
         return response()->json([
             "nombreArchivo" => $nombreArchivo,
