@@ -200,7 +200,7 @@
                 text: '',
                 type: 'warning',
                 showCancelButton: false,
-                confirmButtonText: 'ok',
+                confirmButtonText: 'OK',
                 cancelButtonText: '',
                 closeOnConfirm: true,
                 closeOnCancel: false
@@ -218,7 +218,7 @@
     function eliminarObra(idObra, row){
         swal(
             {
-                title: '¿Elimina la obra seleccionada?',
+                title: '¿Eliminar la obra seleccionada?',
                 text: '',
                 type: 'warning',
                 showCancelButton: true,

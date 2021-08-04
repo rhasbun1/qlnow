@@ -1132,7 +1132,7 @@
       <div class="modal-body">
       <table id="tablaModalToneladasDespachadasMensual" class="table table-hover table-condensed table-responsive" style="width: 100%">
 				<thead>
-					<th style="width:80px;text-align: right;">Nº de Pedido</th>
+					<th style="width:80px;text-align: center;">Nº de Pedido</th>
                     
                     <th>Planta Origen</th>
                     <th style="width: 200px">Cliente</th>
