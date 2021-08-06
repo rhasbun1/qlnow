@@ -511,7 +511,7 @@
         function bajarOC(){
 
             $.ajax({
-                url: urlApp + "existeArchivo",
+                url: urlApp + "existeArchivoNotaDeVenta",
                 headers: { 'X-CSRF-TOKEN' : $("#_token").val() },
                 type: 'POST',
                 dataType: 'json',

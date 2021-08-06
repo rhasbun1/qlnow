@@ -47,6 +47,7 @@ Route::group(['middleware' => 'checksession'], function () {
 	Route::post('datosNotaVenta', 'NotaventaController@datosNotaVenta');
 	Route::post('grabarNuevaNotaVenta', 'NotaventaController@grabarNuevaNotaVenta');
 	Route::post('existeArchivo', 'NotaventaController@existeArchivo');
+	Route::post('existeArchivoNotaDeVenta', 'NotaventaController@existeArchivoNotaDeVenta');
 	Route::post('actualizarDatosNV', 'NotaventaController@actualizarDatosNV');
 	Route::get('notaVentaVigenteCargos', 'NotaventaController@notaVentaVigenteCargos');
 	Route::post('notaVentaVigenteCargos1', 'NotaventaController@notaVentaVigenteCargos1');

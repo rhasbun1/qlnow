@@ -283,6 +283,22 @@ class NotaventaController extends Controller
         }
     }
 
+    public function existeArchivoNotaDeVenta(Request $datos){
+        if($datos->ajax()){
+            if ($datos->input('nombreArchivo') == ''){
+                return response()->json([
+                    "existe" => false
+                ]);
+            }
+            $pathtoFile = public_path().'/ocompra/nventa/'.$datos->input('nombreArchivo');
+            $exists = File::exists($pathtoFile);
+            //$exists = Storage::disk($datos->input('carpeta'))->exists($datos->input('nombreArchivo'));
+            return response()->json([
+                "existe" => $exists
+            ]);                
+        }
+    }
+
     public function bajarOCnventa($nombreArchivo){
       $pathtoFile = public_path().'/ocompra/nventa/'.$nombreArchivo;
       $nombreArchivo = asset('ocompra/nventa/'.$nombreArchivo);
