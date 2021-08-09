@@ -194,8 +194,12 @@
                     Tiempo de Producción (Horas)
                 </div>
                 <div class="col-md-3">
-                    @if ( Session::get('idPerfil')=='3' or
+                    @if(Session::get('idPerfil')=='3' or
                         Session::get('idPerfil')=='5' or
+                        Session::get('idPerfil')=='4' or
+                        Session::get('idPerfil')=='2' or
+                        Session::get('idPerfil')=='5' or
+                        Session::get('idPerfil')=='18' or
                         Session::get('idPerfil')=='1')
                         <input class="form-control input-sm" maxlength="10" id="tiempoProduccion" onkeypress='return isNumberKey(event)'>
                     @else

@@ -383,7 +383,7 @@
                               
                             }
                         }
-                        if(dato9 == 1){
+                        
                             if(dato != $("#cmgttn").val()){
                                 swal(
                                  {
@@ -409,7 +409,7 @@
                              }
                          
 
-                        }
+                        
                        
                     
                 }else{
@@ -434,7 +434,7 @@
                         }
                       
                         }
-                    if(dato9 == 1){
+                   
                         if(dato != $("#cmgttm1").val()){
                             swal(
                              {
@@ -482,7 +482,7 @@
                           
                          }
     
-                        }
+                        
         
                 }
 
@@ -839,7 +839,6 @@
         }
 
 
-        if(!retiraCliente){
             //Verificacion de carga máxima para pedidos tipo transporte NORMAL
 
             if(valorFleteFalso>0){
@@ -1028,7 +1027,7 @@
                     }
                 }
             }
-        }
+        
 
 
         var cont=0;

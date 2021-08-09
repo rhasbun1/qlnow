@@ -158,7 +158,7 @@
                         <th style="width: 80px">Forma de<br>Entrega</th>
                         <th style="width: 80px">Planta de Origen</th>
                         <th style="width: 80px">Estado</th>
-                        <th style="width: 80px;">Estado2</th>
+                        <th style="width: 80px;">Plazo</th>
                         <th style="width: 60px; text-align: right;">Nº Nota<br>de Venta</th>
                         <th style="width: 60px; text-align: right;">Nº de guía</th>
                         <th style="width: 80px; text-align: right;">Nº Aux.</th>
