@@ -60,7 +60,7 @@
                                 <th style="width: 100px"><b>Total c/IVA</b></th>
                                 <th style="width: 100px">Fecha Entrega</th>
                                 <th style="width: 70px">Estado</th>
-                                <th style="width: 70px">Estado2</th>
+                                <th style="width: 70px">Plazo</th>
                             </thead>
                             <tbody>
                                 @foreach($pedidos as $item)
@@ -102,7 +102,7 @@
                             <th style="width: 150px">Transporte</th>
                             <th style="width: 50px;text-align: right;">Fecha Creación</th>
                             <th style="width: 80px">Nº Aux.</th>
-                            <th style="width: 70px">Estado2</th>
+                            <th style="width: 70px">Plazo</th>
                         </thead>
                         <tbody>
                             @foreach($pedidos as $item)
