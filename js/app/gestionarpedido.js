@@ -438,7 +438,7 @@
                         if(dato != $("#cmgttm1").val()){
                             swal(
                              {
-                                 title: 'las toneladas para el producto 1 debe ser  '+$("#cmgttm1").val()+' toneladas',
+                                 title: 'El primer producto seleccionado debe ser por una cantidad de '+$("#cmgttm1").val()+' toneladas',
                                  text: '',
                                  type: 'warning',
                                  showCancelButton: false,
@@ -461,7 +461,7 @@
                          if((parseFloat(dato1)) != $("#cmgttm2").val()){
                             swal(
                              {
-                                 title: 'las toneladas para el producto 2 debe ser  '+$("#cmgttm2").val()+' toneladas',
+                                 title: 'El segundo producto seleccionado debe ser por una cantidad de '+$("#cmgttm2").val()+' toneladas',
                                  text: '',
                                  type: 'warning',
                                  showCancelButton: false,
