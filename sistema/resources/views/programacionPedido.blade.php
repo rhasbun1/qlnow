@@ -340,7 +340,7 @@
             <button id="btnAsignarGuia" class="btn btn-sm btn-success" onclick="asignarFolio();">Asignar Guía a elementos seleccionados</button>
             @endif
             @if( ($pedido[0]->tipoCarga==1 or $pedido[0]->tipoCarga==2 ) and $pedido[0]->idFormaEntrega==2 and (Session::get('idPerfil')=='5' or Session::get('idPerfil')=='7') and $sinDespachar>0 )
-                <button id="btnHistorico" class="btn btn-sm btn-danger" onclick="pasarHistorico();">Pasar a Histórico</button>
+                
             @else
                 @if ( ( ( intval($pedido[0]->idEstadoPedido) >= 2 and intval($pedido[0]->idEstadoPedido <=5) ) or intval($pedido[0]->idEstadoPedido==0) ) and
                     (Session::get('idPerfil')=='5' or Session::get('idPerfil')=='6' or Session::get('idPerfil')=='7' ) )
