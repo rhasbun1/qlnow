@@ -225,7 +225,7 @@
                                     @if( $item->idEstadoPedido == '1' )
                                         <tr>
                                             <td><a href="{{ asset('/') }}verpedido/{{ $item->idPedido }}/3-2/" class="btn btn-xs btn-success">{{ $item->idPedido }}</a></td>
-                                            <td></td>
+                                            <td>{{ $item->estadoPedido }}</td>
                                             <td>{{ $item->fechahora_creacion }}</td>
                                             <td>{{ $item->nombreCliente }}</td>
                                             <td>{{ $item->nombreObra }}</td>

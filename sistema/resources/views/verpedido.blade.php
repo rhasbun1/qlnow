@@ -189,7 +189,7 @@
                             @endif                             
                         </td>
                         <td>{{ $item->formula }}</td>
-                        <td style="width:50px">{{ $item->cantidad }}</td>   
+                        <td style="width:50px">{{number_format( $item->cantidad, 0, ',', '.' ) }}</td>   
                         <td> {{ $item->u_nombre }} </td>
                         @if( Session::get('grupoUsuario')=='C' or Session::get('grupoUsuario')=='CL' )   
                             <td align="right">{{ number_format( $item->precioActual, 0, ',', '.' ) }}</td>
