@@ -588,8 +588,9 @@
 
         for (var i = 1; i < tabla.rows.length; i++){
             if(verificarRetiro==1){         
-              if(tabla.rows[i].cells[9].getElementsByTagName('select')[0].value == "2"){
+              if(tabla.rows[i].cells[9].getElementsByTagName('select')[0].value == "2" && tabla.rows[i].style.display !='none' ){
                 verificarRetiro = 0;
+                
               }
               
             }

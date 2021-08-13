@@ -281,7 +281,7 @@
                     @elseif ($accion == 2)
                         <a href="{{ URL::previous() }}" class="btn btn-sm btn-warning" style="width:80px">Atrás</a>  
                     @elseif ($accion == 3)
-                        <a href="{{ asset('/') }}historicoNotasdeVenta/" class="btn btn-sm btn-warning" style="width:80px">Atrás</a> 
+                        <a onclick="history.go(-1)" class="btn btn-sm btn-warning" style="width:80px">Atrás</a> 
                     @elseif ($accion == 4)
                         <a href="{{ asset('/') }}verpedidoNuevaVentana/{{ $numPedido }}/1/" class="btn btn-sm btn-warning" style="width:80px">Atrás</a>  <!--MATIAS -->
                     @else

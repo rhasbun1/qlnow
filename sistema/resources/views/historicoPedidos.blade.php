@@ -64,7 +64,7 @@
                     <div class="col-md-7">
                         <div class="row">
                             <div class="col-md-4" style="padding-top: 5px">
-                                Filtrar por Fecha Salida
+                                Filtro por Fecha de Salida (<b>NO</b> se incluyen <b>pedidos suspendidos</b>)
                             </div>
                             <div class="col-md-3">
                                 <div class="input-group date" id="divFechaMin" data-date-end-date="0d">
@@ -88,7 +88,7 @@
                         </div>
                         <div class="row" style="padding-top: 5px">  
                             <div class="col-md-4" style="padding-top: 5px">
-                                Filtrar por Fecha de Creación (filtro para <b>ver todos los pedidos suspendidos</b>)
+                                Filtro por Fecha Creación (<b>SI</b> se incluyen <b>pedidos suspendidos</b>)
                             </div>
                             <div class="col-md-3">
                                 <div class="input-group date" id="divFechaCreacionMin" data-date-end-date="0d">

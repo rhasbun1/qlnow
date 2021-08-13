@@ -460,6 +460,7 @@
                         function(isConfirm)
                         {
                             if(isConfirm){
+                                window.location.reload();
                                 return;                       
                             }
                         }
