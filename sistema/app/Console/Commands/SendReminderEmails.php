@@ -44,7 +44,7 @@ class SendReminderEmails extends Command
      */
     public function handle()
     {
-      $usuarios = ["raisotoprogra@gmail.com","cbastias@spsgroup.cl"];
+      $usuarios = ["raisotoprogra@gmail.com","nbastias@spsgroup.cl"];
       foreach($usuarios as $item){
         for ($i = 1; $i <= 4; $i++) {
           $pedidosCreados = DB::Select('call spGetPedidosCorreo(?)',array(
