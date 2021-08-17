@@ -360,7 +360,7 @@
                     if( $("#precioReferencia").val() == "" ){
                         swal(
                             {
-                                title: 'El Precio No Puede Estar Vacio!',
+                                title: 'El precio no puede estar vacío!',
                                 text: '',
                                 type: 'warning',
                                 showCancelButton: false,

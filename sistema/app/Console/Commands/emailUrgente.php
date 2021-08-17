@@ -43,17 +43,18 @@ class emailUrgente extends Command
      */
     public function handle()
     {
-      $usuarios = ["raisotoprogra@gmail.com","nbastias@spsgroup.cl"];
-      foreach($usuarios as $item){
-        for ($i = 5; $i <= 9; $i++) {
-            $pedidosCreadosUrgente = DB::Select('call spGetPedidosCorreoUrgente(?)',array(
-                $i
+      $usuarios = ["nbastias@spsgroup.cl","raisotoprogra@gmail.com"];
+       for ($i = 5; $i <= 9; $i++) {
+           $pedidosCreadosUrgente = DB::Select('call spGetPedidosCorreoUrgente(?)',array(
+               $i
             ));
+            foreach($usuarios as $item){
               if(!empty($pedidosCreadosUrgente)){
                 $this->emailPedidoCreado($pedidosCreadosUrgente,$i,$item);
               }
-        }
+           }
       }
+      
     }
 
      private function emailPedidoCreado($pedidos,$tipoCorreo,$usuario)
