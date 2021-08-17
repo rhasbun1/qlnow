@@ -183,7 +183,7 @@
                     <th>Ap.Materno</th>
                     <th>Rut</th>
                     <th>Teléfono</th>
-                    <th>email</th>
+                    <th>Email</th>
                     <th style="text-align: center;">Habilitado</th>
       
                 </thead>

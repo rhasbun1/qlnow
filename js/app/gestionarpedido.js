@@ -128,6 +128,8 @@
                     function(isConfirm)
                     {
                         if(isConfirm){
+                            document.getElementById('listaProductos').selectedIndex=-1;
+                            document.getElementById('tipoCarga').selectedIndex=-1;
                             return;                         
                         }
                     }
@@ -162,6 +164,7 @@
                     function(isConfirm)
                     {
                         if(isConfirm){
+                            document.getElementById('listaProductos').selectedIndex=-1;
                             document.getElementById('tipoCarga').selectedIndex=-1;
                             return;                         
                         }
@@ -731,12 +734,11 @@
             
         }
 
-
         if($("#tipoCarga").val()=="1"){
             if(cont>0){
                 swal(
                     {
-                        title: 'No ha ingresado una cantidad para generar el pedido' ,
+                        title: 'Agrege formato o cantidad solicitada' ,
                         text: '',
                         type: 'warning',
                         showCancelButton: false,
@@ -1311,7 +1313,7 @@
                         function(isConfirm)
                         {
                             if(isConfirm){
-                               
+                                    mensajeFlete=1;
                                     //location.href= urlApp + "gestionarpedido/"+ $("#txtNumeroNotaVenta").val() + "/"; 
                                     actualizarDetalleNotaVenta();
 
