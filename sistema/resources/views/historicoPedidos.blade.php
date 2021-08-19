@@ -148,7 +148,7 @@
                     <thead>
                         <th style="width: 60px">Pedido</th>
                         <th style="width: 120px"></th>
-                        <th style="width: 120px">Cliente</th>
+                        <th style="width: 120px;">Cliente</th>
                         <th style="width: 120px">Obra/Planta</th>
                         <th style="width: 80px">Producto</th>
                         <th style="width: 40px;text-align: right;">Cantidad<br>Real</th>
@@ -162,6 +162,7 @@
                         <th style="width: 60px; text-align: right;">Nº Nota<br>de Venta</th>
                         <th style="width: 60px; text-align: right;">Nº de guía</th>
                         <th style="width: 80px; text-align: right;">Nº Aux.</th>
+                        <th style="width: 80px; text-align: right;">Mod</th>
                     </thead>
                     <tbody>
                     </tbody>            
@@ -498,9 +499,12 @@
                       },
                 success:function(dato){
                     for(var x=0;x<dato.length;x++){
-                        cadena="";
+                        cadena='<tr style="background-color: #A93226; color: #FDFEFE">';
                         if(dato[x].modificado>0){
                             cadena+='<span class="badge badge-primary">' + dato[x].modificado + '</span>';
+                            modificado="si";
+                        }else{
+                            modificado="no";
                         }    
                         if(dato[x].tipoTransporte==2){
                             cadena+='<span class="badge badge-danger">M</span>';
@@ -552,9 +556,9 @@
                                 dato[x].estadoAtrasado,
                                 dato[x].idNotaVenta,
                                 dato[x].numeroGuia,
-                                celdaNumAux
+                                celdaNumAux,
+                                modificado
                             ] ).index();
-
                         tabla.cell(fila,0).node().width="60px";
                         tabla.cell(fila,1).node().width="120px";
                         tabla.cell(fila,2).node().width="120px";
@@ -571,8 +575,9 @@
                         tabla.cell(fila,13).node().width='60px';tabla.cell(fila,13).node().style.textAlign="right";
                         tabla.cell(fila,14).node().width='60px';tabla.cell(fila,14).node().style.textAlign="right";
                         tabla.cell(fila,15).node().width='80px';
+                        
 
-                    }
+                    }                 
                     tabla.draw();
                     actualizarFiltros(tabla);
                     $("#mdProcesando").modal('hide');
@@ -629,8 +634,6 @@
         }        
 
         $(document).ready(function() {
-
-
             var hoy = new Date();
             var dd = hoy.getDate();
             var mm = hoy.getMonth()+1;
@@ -695,6 +698,11 @@
                                         return "<div style='white-space:normal;width:100%'>" + data + "</div>";
                                     },                                     
                                     targets:[1]
+                                },
+
+                                {
+                                 "targets": [ 16 ],
+                                    "visible": false
                                 }
                             ],
 
@@ -717,7 +725,7 @@
                         }
                     }                       
                    
-                ],                
+                ],                        
                 "order": [[ 0, "desc" ]],                       
                 language:{ url: "{{ asset('/') }}locales/datatables_ES.json",
                            "decimal": ","},
@@ -726,7 +734,17 @@
                   },
                 initComplete: function () {
                     actualizarFiltros(this.api());
-                }                  
+                },
+                "createdRow": function( row, data, dataIndex){
+                if( data[11]=="Suspendido"){
+                    console.log(data);
+                    $(row).addClass('red');
+                }
+                if( data[11]!="Suspendido" && data[16]=="si"){
+                    $(row).addClass('yellow');
+                }
+            }
+                      
             });
 
 
@@ -839,5 +857,13 @@
         }   
 
     </script>
-    
+    <style>
+        .red {
+            background-color: red !important;
+            }
+
+        .yellow {
+            background-color: yellow !important;
+            }
+    </style>
 @endsection

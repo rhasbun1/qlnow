@@ -930,9 +930,6 @@
                 }
             } 
 
-            if(numFilas==numGuias){
-                document.getElementById("btnHistorico").style.display="none";
-            }
 
             if(tipoTransporte.value==2){
                 if( document.getElementById('btnAsignarGuia') ){

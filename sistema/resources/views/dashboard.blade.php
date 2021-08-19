@@ -190,8 +190,8 @@
 		<a href="#modalPedidosAGranelSinAsignacionHorario"  data-toggle="modal">
 			<div class="panel-stat3 bg-info btn" style="width:100%">
 				<h2 class="m-top-none">{{ $datos2[0]->cantidadPedidosGranelSinAsignacion }}</h2>
-        <h4>Pedidos a granel sin Horario de Carga</h4>
-        <br>
+        <h4>Pedidos a granel</h4>
+        <h4>sin horario de carga</h4>
 			</div>
 		</a>
 	</div>

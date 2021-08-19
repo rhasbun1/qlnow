@@ -360,7 +360,7 @@
             -->
         </div>
         
-        @if (Session::get('grupoUsuario')!='CL')
+       
         <div class="panel panel-default" id="contenedor3">
             <div class="panel-heading">
                 <div class="panel-tab clearfix">
@@ -442,7 +442,7 @@
                 </div>
             </div>                 
         </div>
-        @endif
+       
 
 
     </div>
