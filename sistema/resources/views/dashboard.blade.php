@@ -1071,36 +1071,26 @@
       <div class="modal-body">
       <table id="tablaModalToneladasDespachadasAnual" class="table table-hover table-condensed table-responsive" style="width: 100%">
 	  <thead>
-					<th style="width:80px;text-align: right;">Nº de Pedido</th>       
-                    <th>Planta Origen</th>
+					          <th>Nombre Planta</th>       
                     <th style="width: 200px">Cliente</th>
-                    <th>Obra/Planta</th>
+                    <th>Obra</th>
                     <th>Producto</th>
-    				        <th style="width: 60px">Cantidad</th>
-					          <th>Transporte</th>
-                    <th>Conductor</th>
-                    <th style="width: 80px">Fecha Salida</th>
+    				        <th style="width: 60px">Total Despachado</th>
+					          <th>Unidad</th>
+
     	</thead>
                 
                 <tbody>
 				
                 @foreach($listatoneladasAnuales as $item)
-                
-                <?php
-                    $fecha = explode(" ", $item->fechaHoraSalida);
-                
-                ?>
-				<tr>
-                            <td>{{ $item->idPedido }}</td>
-                            <td>{{ $item->plantaQLSA }}</td>
+		                		<tr>
+                            <td>{{ $item->nombrePlanta }}</td>
                             <td>{{ $item->nombreCliente }}</td>
                             <td>{{ $item->nombreObra }}</td>
-                            <td>{{ $item->prod_nombre }}</td>
-                            <td>{{ $item->cantidadDespachada }}</td>
-                            <td>{{ $item->nombreTransporte }}</td>
-                            <td>{{ $item->nombreConductor }}</td>
-                            <td>{{ date('d/m/Y', strtotime($fecha[0]))  }} {{$fecha[1]}}</td>
-				</tr>
+                            <td>{{ $item->nombreProducto }}</td>
+                            <td>{{ $item->TotalDespachado }}</td>
+                            <td>{{ $item->unidad }}</td>
+		                		</tr>
                 @endforeach        
 				
                 </tbody>
@@ -1131,38 +1121,27 @@
       </div>
       <div class="modal-body">
       <table id="tablaModalToneladasDespachadasMensual" class="table table-hover table-condensed table-responsive" style="width: 100%">
-				<thead>
-					<th style="width:80px;text-align: center;">Nº de Pedido</th>
-                    
-                    <th>Planta Origen</th>
-                    <th style="width: 200px">Cliente</th>
-                    <th>Obra/Planta</th>
-                    <th>Producto</th>
-    				        <th style="width: 60px">Cantidad</th>
-					          <th>Transporte</th>
-                    <th>Conductor</th>
-                    <th style="width: 80px">Fecha Salida</th>
+				<thead>                   
+          <th>Nombre Planta</th>       
+          <th style="width: 200px">Cliente</th>
+          <th>Obra</th>
+          <th>Producto</th>
+          <th style="width: 60px">Total Despachado</th>
+          <th>Unidad</th>
 					
 				</thead>
                 
                 <tbody>
                 @foreach($listaToneladasaMensuales as $item)
-                <?php
-                    $fecha = explode(" ", $item->fechaHoraSalida);
-                
-                ?>
                
 				<tr>  
-                            <td>{{ $item->idPedido }}</td>
-                            <td>{{ $item->plantaQLSA }}</td>
-                            <td>{{ $item->nombreCliente }}</td>
-                            <td>{{ $item->nombreObra }}</td>
-                            <td>{{ $item->prod_nombre }}</td>
-                            <td>{{ $item->cantidadDespachada }}</td>
-                            <td>{{ $item->nombreTransporte }}</td>
-                            <td>{{ $item->nombreConductor }}</td>
-                            <td>{{  date('d/m/Y', strtotime($fecha[0]))  }} {{$fecha[1] }}</td>
-							</tr>
+          <td>{{ $item->nombrePlanta }}</td>
+          <td>{{ $item->nombreCliente }}</td>
+          <td>{{ $item->nombreObra }}</td>
+          <td>{{ $item->nombreProducto }}</td>
+          <td>{{ $item->TotalDespachado }}</td>
+          <td>{{ $item->unidad }}</td>
+				</tr>
                 @endforeach        
                 </tbody>
                
@@ -1598,7 +1577,7 @@
                         text: '<i class="fa fa-file-excel-o"></i>',
                         titleAttr: 'Excel',                        
                         exportOptions: {
-                            columns: [ 0, 1, 2, 3, 4,5,6,7,8 ]
+                            columns: [0,1,2,3,4,5]
                         }
                     }
                 ],                
@@ -1627,7 +1606,7 @@
                         text: '<i class="fa fa-file-excel-o"></i>',
                         titleAttr: 'Excel',                        
                         exportOptions: {
-                            columns: [ 0, 1, 2, 3, 4 ,5,6,7,8]
+                            columns: [0,1,2,3,4,5]
                         }
                     }
                 ],                

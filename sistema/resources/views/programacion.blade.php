@@ -423,9 +423,11 @@
     <script src="https://cdn.datatables.net/fixedcolumns/3.2.5/js/dataTables.fixedColumns.min.js"></script>
     <script src="{{ asset('/') }}js/app/funciones.js?{{$parametros[0]->version}}"></script>
     <script src="{{ asset('/') }}js/app/guiaDespacho.js?{{$parametros[0]->version}}"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.datatables.net/plug-ins/1.10.12/sorting/datetime-moment.js"></script>
 
     <script>
-
         function ingresarNumeroAuxiliar(row){
             var tabla=$("#tablaAprobados").DataTable();
             var fila=tabla.row(row).index();
@@ -852,12 +854,13 @@
                   },
                   error: function(jqXHR, text, error){
                       alert('Error!, No se pudo Añadir los datos');
-                  }
+                  } 
             });
         });
         
         $(document).ready(function() {
-            
+            	
+            $.fn.dataTable.moment('DD/MM/YYYY A');
             var idPerfil=$("#idPerfil").val();
             var tablaDetalle="#tablaAprobados";
             // Setup - add a text input to each footer cell

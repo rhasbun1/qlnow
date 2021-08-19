@@ -859,11 +859,13 @@
     </script>
     <style>
         .red {
-            background-color: red !important;
+            background-color: #A93226 !important;
+            color: #FDFEFE !important;
             }
 
         .yellow {
             background-color: yellow !important;
+            color: #FDFEFE !important;
             }
     </style>
 @endsection
