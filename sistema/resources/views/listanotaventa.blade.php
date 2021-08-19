@@ -92,15 +92,20 @@
     <!-- Datepicker -->
     <script src="{{ asset('/') }}js/bootstrap-datepicker.min.js"></script> 
     <script src="{{ asset('/') }}locales/bootstrap-datepicker.es.min.js"></script>
-
+    <script src="js/syncfusion/ej.web.all.min.js"> </script>
     <!-- Timepicker -->
     <script src="{{ asset('/') }}js/bootstrap-timepicker.min.js"></script>  
 
     <script src="{{ asset('/') }}js/app/funciones.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.datatables.net/plug-ins/1.10.12/sorting/datetime-moment.js"></script>
+
 
     <script>
 
         $(document).ready(function() {
+            $.fn.dataTable.moment('DD/MM/YYYY HH:mm:ss');
             // Setup - add a text input to each footer cell
             $('#tablaDetalle thead tr').clone(true).appendTo( '#tablaDetalle thead' );
             $('#tablaDetalle thead tr:eq(1) th').each( function (i) {

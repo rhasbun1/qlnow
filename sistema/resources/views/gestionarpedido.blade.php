@@ -140,7 +140,7 @@
                                     <td aling="right"><input class="form-control input-sm" onblur="verificarCantidad(this);" onkeypress="return isIntegerKey(event)" maxlength="6" ></td>
                                     <td>
                                             
-                                                <select  id="selectPlanta" class="selectPlanta{{ $item->prod_codigo }} form-control input-sm">
+                                                <select disabled  id="selectPlanta" class="selectPlanta{{ $item->prod_codigo }} form-control input-sm">
                                                 
                                                 </select>                                    
                                     </td>
