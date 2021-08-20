@@ -865,7 +865,6 @@
 
         .yellow {
             background-color: yellow !important;
-            color: #FDFEFE !important;
             }
     </style>
 @endsection
