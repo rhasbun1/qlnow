@@ -1071,11 +1071,11 @@
         var fechaEntrega = $("#txtFechaEntrega").val();
         var fechaEntregaMaxima;
         if ($("#horario option:selected").html() == "AM"){
-            fechaEntregaMaxima = new Date(fechaEntrega.split('/')[2], fechaEntrega.split('/')[1]-1, fechaEntrega.split('/')[0], 11, 59, 0, 0);
+            fechaEntregaMaxima = new Date(fechaEntrega.split('/')[2], fechaEntrega.split('/')[1]-1, fechaEntrega.split('/')[0], 08, 00, 0, 0);
             console.log(fechaEntregaMaxima);
         }
         else{
-            fechaEntregaMaxima = new Date(fechaEntrega.split('/')[2], fechaEntrega.split('/')[1]-1, fechaEntrega.split('/')[0], 23, 59, 0, 0);   
+            fechaEntregaMaxima = new Date(fechaEntrega.split('/')[2], fechaEntrega.split('/')[1]-1, fechaEntrega.split('/')[0], 16, 00, 0, 0);   
             console.log(fechaEntregaMaxima);
         }
         //console.log("Fecha Creacion Pedido: ", fechaCreacionPedido);
