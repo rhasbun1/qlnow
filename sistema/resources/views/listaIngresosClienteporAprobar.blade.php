@@ -17,10 +17,11 @@
             success:function(dato){
                 for (var i = 0; i < tabla.rows().count(); i++){
                     if(tabla.cell(i,0).node().dataset.pedido==idPedido){
-                        tabla.cell(i,0).node().getElementsByTagName('button')[0].style.visibility = 'hidden';                        
+                        tabla.cell(i,0).node().getElementsByTagName('button')[0].style.visibility = 'hidden';        
                     }
                 }
                 tabla.draw();
+                window.location.reload(false);
             }
         })
     }
