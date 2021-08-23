@@ -386,6 +386,7 @@
             var codigoUnidad = tabla.rows[i].cells[4].innerHTML;
             var codigoProducto =  tabla.rows[i].cells[0].innerHTML;
             var nombreProducto = tabla.rows[i].cells[2].innerHTML;
+            var nombreUnidad = tabla.rows[i].cells[4].innerHTML;
             if(codigoPlanta>0){
             $.ajax({
                 async: false,
@@ -403,7 +404,7 @@
                     seguir= 0;
                     swal(
                         {
-                            title: 'El producto '+nombreProducto+' no tiene tiempo de producción en esta planta o unidad',
+                            title: 'El producto '+nombreProducto+' en unidad '+ nombreUnidad +' no está creado para la planta de origen seleccionada',
                             text: '',
                             type: 'warning',
                             showCancelButton: false,
