@@ -1231,25 +1231,38 @@
         var atrasado = 0;
         var grabar = true;
         if (new Date(fechaCreacionPedido) >= new Date(fechaEntregaMaxima)){
-            swal(
-                {
-                    title: 'Está creando un pedido fuera de plazo, ¿Desea continuar con la creación del pedido?',
-                    text: '',
-                    type: 'warning',
-                    showCancelButton: true,
-                    confirmButtonText: 'SI',
-                    cancelButtonText: 'NO',
-                    closeOnConfirm: true,
-                    closeOnCancel: true
-                },
-                function(isConfirm)
-                {
-                    if (isConfirm){
-                        atrasado = 1;
-                        grabarPedido(total, cadena, noExceder, incluyeFleteFalso, cantFleteFalso, valFleteFalso, Origen, atrasado);
-                    }
-                });
-                $("#btnCrearPedido").attr("disabled", false);
+            if(Origen!="Q"){
+                swal(
+                    {
+                        title: 'Está creando un pedido fuera de plazo, ¿Desea continuar con la creación del pedido?',
+                        text: '',
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'SI',
+                        cancelButtonText: 'NO',
+                        closeOnConfirm: true,
+                        closeOnCancel: true
+                    },
+                    function(isConfirm)
+                    {
+                        if (isConfirm){
+                            atrasado = 1;
+                            grabarPedido(total, cadena, noExceder, incluyeFleteFalso, cantFleteFalso, valFleteFalso, Origen, atrasado);
+                        }
+                    });
+                    $("#btnCrearPedido").attr("disabled", false);
+            }else{
+                swal(
+                    {
+                        title: 'No puede crear un pedido fuera de plazo',
+                        text: '',
+                        type: 'warning',            
+                        cancelButtonText: 'NO',
+                        closeOnConfirm: true,
+                        closeOnCancel: true
+                    });
+                    $("#btnCrearPedido").attr("disabled", false);
+            }
         }
         else{
             grabarPedido(total, cadena, noExceder, incluyeFleteFalso, cantFleteFalso, valFleteFalso, Origen, atrasado);
