@@ -76,7 +76,7 @@
                                     <td>{{ $item->nombreCliente }}</td>
                                     <td>{{ $item->nombreObra }}</td>
                                     <td>{{ $item->prod_nombre }}</td>
-                                    <td style="text-align: right">{{ $item->cantidad }}</td>
+                                    <td style="text-align: right">{{ number_format($item->cantidad, 0, ",", ".") }}</td>
                                     <td>{{ $item->u_abre }}</td>
                                     <td>{{ $item->nombrePlanta }}</td>
                                     <td>{{ $item->formaEntrega }}</td>
@@ -114,7 +114,7 @@
                                     <td style="width: 120px">{{ $item->Obra }}</td>
                                     <td style="width: 120px">{{ $item->fechaEntrega }}</td>
                                     <td style="width: 120px">{{ number_format($item->total, 0, ",", ".") }}</td>
-                                    <td style="width: 120px">{{ $item->cantidad }}</td>
+                                    <td style="width: 120px">{{ number_format($item->cantidad, 0, ",", ".") }}</td>
                                     <td style="width: 120px">{{ $item->u_abre }}</td>
                                     
                                 </tr>
@@ -175,7 +175,8 @@
             if($("#idCliente").val()==14){
                 var table=$('#tablaAprobados').DataTable({
                  orderCellsTop: true,
-                 fixedHeader: true,         
+                 fixedHeader: true,
+                 "orderClasses": false,         
                 "lengthMenu": [[6, 12, 20, -1], ["6", "12", "20", "Todos"]],
                 dom: 'Bfrtip',
                 buttons: [
@@ -200,7 +201,8 @@
                     }
                 ],                       
                 "order": [[ 0, "desc" ]],                        
-                language:{url: "{{ asset('/') }}locales/datatables_ES.json"},
+                language:{url: "{{ asset('/') }}locales/datatables_ES.json","decimal": ",",
+                        "thousands": "."},
                 initComplete: function () {
                     this.api().columns(2).every( function () {
                         var column = this;

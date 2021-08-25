@@ -841,7 +841,7 @@
             } else if(noPuedePonerCero>0){
                 swal(
                     {
-                        title: 'No puede poner 0 en la cantidad si no desea el producto deje la caja vacia' ,
+                        title: 'La cantidad solicitada debe ser mayor a 0, deje la cantidad vacío (sin ceros) para los productos no requeridos en este pedido',
                         text: '',
                         type: 'warning',
                         showCancelButton: false,

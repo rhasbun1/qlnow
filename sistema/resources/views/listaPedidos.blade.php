@@ -162,7 +162,7 @@
                                     <td style="width: 70px">
                                         {{ $item->prod_nombre }}                                   
                                     </td>
-                                    <td style="width: 30px;text-align: right;">{{number_format( $item->cantidad, 0, ',', ',' ) }}</td>
+                                    <td style="width: 30px;text-align: right;">{{ number_format( $item->cantidad, 0, ',', '.' ) }}</td>
                                     <td style="width: 30px;text-align: center">{{ $item->u_abre }}</td>
                                     <td style="width: 100px">{{ $item->fechaEntrega }} {{ $item->horarioEntrega }}</td>
                                     <td style="width: 70px">{{ $item->formaEntrega }}</td>
@@ -848,7 +848,8 @@
                             }                                        
                         ],                
                         "order": [[ 0, "desc" ]],             
-                        language:{url: "{{ asset('/') }}locales/datatables_ES.json"},
+                        language:{url: "{{ asset('/') }}locales/datatables_ES.json","decimal": ",",
+                        "thousands": "."},
                         preDrawCallback: function( settings ) {
                             document.getElementById('contenidoPrincipal').style.display="block";
                         },                
