@@ -76,7 +76,7 @@
                                         <td style="width: 250px">{{ $item->nombreObra }}</td>
                                         <td style="width: 100px; text-align: right;"><b>$ {{number_format( $item->totalNeto + $item->montoIva, 0, ',', ',' )  }}</b></td>
                                         <td style="width: 100px">{{ date('d/m/Y', strtotime($item->fechaEntrega)) }} {{ $item->horarioEntrega}}</td>
-                                        <td style="width: 70px">{{ $item->estado }}</td>
+                                        <td style="width: 70px">{{ $item->estadoPedido }}</td>
                                         <td style="width: 70px">{{ $item->estadoAtrasado }}</td>
                                     </tr>
                                 @endforeach
@@ -200,6 +200,10 @@
 
     <script src="{{ asset('/') }}js/app/funciones.js?{{$parametros[0]->version}}"></script>
     <script src="{{ asset('/') }}js/app/guiaDespacho.js?{{$parametros[0]->version}}"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+
+    <script src="//cdn.datatables.net/plug-ins/1.10.12/sorting/datetime-moment.js"></script>
 
     <script>
 
@@ -449,6 +453,10 @@
         });
 
         $(document).ready(function(){
+            $.fn.dataTable.moment('DD/MM/YYYY A');
+            $.fn.dataTable.moment('DD/MM/YYYY HH:mm:ss');
+
+
             var tablaDetalle="#tablaDetalle";
             // Setup - add a text input to each footer cell
             $('#tablaDetalle thead tr').clone(true).appendTo( '#tablaDetalle thead' );

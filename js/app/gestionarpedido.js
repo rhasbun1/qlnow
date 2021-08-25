@@ -493,6 +493,77 @@
             
     
 
+        }else{
+            if($("#tipoTransporte").val() == 2){
+                var dato = "";
+                var dato1 = "";
+
+                for (var i = 1; i < tabla.rows.length; i++){
+                if(dato == ""){
+                    
+                    if(tabla.rows[i].cells[7].getElementsByTagName('input')[0].value.trim() !=  ""){
+                        dato = tabla.rows[i].cells[7].getElementsByTagName('input')[0].value.trim();
+                        dato9 = tabla.rows[i].cells[9].getElementsByTagName('select')[0].value;
+
+                    }
+                    
+                }
+                if(dato != ""){
+                    if(tabla.rows[i].cells[7].getElementsByTagName('input')[0].value.trim() !=  ""){
+                        dato1 = tabla.rows[i].cells[7].getElementsByTagName('input')[0].value.trim();
+                    }
+                }
+            
+                }
+        
+                if(dato > $("#cmgttm1").val()){
+                    swal(
+                    {
+                        title: 'El primer producto seleccionado no puede ser mayor a '+$("#cmgttm1").val()+' toneladas',
+                        text: '',
+                        type: 'warning',
+                        showCancelButton: false,
+                        confirmButtonText: 'Cerrar',
+                        cancelButtonText: '',
+                        closeOnConfirm: true,
+                        closeOnCancel: false
+                    },
+                    function(isConfirm)
+                    {
+                        if(isConfirm){
+                            return;
+                            
+                        }
+                    }
+                )
+                    return;
+                
+                }
+                if((parseFloat(dato1)) > $("#cmgttm2").val()){
+                    swal(
+                    {
+                        title: 'El segundo producto seleccionado no puede ser mayor a '+$("#cmgttm2").val()+' toneladas',
+                        text: '',
+                        type: 'warning',
+                        showCancelButton: false,
+                        confirmButtonText: 'Cerrar',
+                        cancelButtonText: '',
+                        closeOnConfirm: true,
+                        closeOnCancel: false
+                    },
+                    function(isConfirm)
+                    {
+                        if(isConfirm){
+                            return;
+                            
+                        }
+                    }
+                )
+                    return;
+                
+                }
+            }
+
         }
         
         var verificadorFeriado;
@@ -651,7 +722,7 @@
             var mensaje='';
 
             if($("#tipoCarga").val()=='2'){
-                mensaje='El pedido OTROS, debe tener misma Planta de origen y Forma de entrega para todos productos!!(*).';
+                mensaje='La planta de origen y la forma de entrega debe ser la misma para todos los productos solicitados.';
             }else{
                 mensaje='El pedido Granel/Mixto, debe tener misma Planta de origen y Forma de entrega para ambos productos!!(*).';
             }

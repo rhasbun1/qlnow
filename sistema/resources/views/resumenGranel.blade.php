@@ -87,6 +87,9 @@
 <script src="{{ asset('/') }}js/app/funciones.js"></script>
 <script src="{{ asset('/') }}js/dataTables.buttons.min.js"></script>
 <script src="{{ asset('/') }}js/buttons.html5.min.js"></script>	
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+
+<script src="//cdn.datatables.net/plug-ins/1.10.12/sorting/datetime-moment.js"></script>
 <script>
 
     function maximizar(){
@@ -165,7 +168,7 @@
 			        var rowNode= tabla.row.add([cadena,
                                                 dato[x].formaEntrega,
 			        							dato[x].idPedido,
-			        							formato(dato[x].fechaCarga) + ' ' + dato[x].horaCarga ,
+			        							dato[x].fechaCarga + ' ' + dato[x].horaCarga ,
 			        							dato[x].nombrePlanta,
 			        							dato[x].prod_nombre,
 			        							dato[x].cantidad,
@@ -276,7 +279,7 @@
     }
 
 	$(document).ready(function() {
-
+        $.fn.dataTable.moment('DD-MM-YYYY HH:mm');
 
 		var hoy = new Date();
 		var dd = hoy.getDate();

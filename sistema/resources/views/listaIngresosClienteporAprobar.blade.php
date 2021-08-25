@@ -78,6 +78,7 @@
                     <th>Fecha Entrega</th>
                     <th>Producto</th>
                     <th>Cantidad</th>
+                    <th>Unidad</th>
                 </thead>
                 <tbody>
                     @foreach($pedidos as $item)
@@ -108,7 +109,8 @@
                             @endif    
                             <td>{{ $item->fechaEntrega }}</td>
                             <td>{{ $item->prod_nombre }}</td>
-                            <td>{{ number_format( $item->cantidad, 0, ',', '.' ) }}</td>                           
+                            <td>{{ number_format( $item->cantidad, 0, ',', '.' ) }}</td>    
+                            <td>{{  $item->u_abre}}</td>                            
                         </tr>
                     @endforeach
                 </tbody>            

@@ -290,6 +290,17 @@
                             closeOnConfirm: true,
                             closeOnCancel: false
                         });
+            }else if($("#tiempoProduccion").val()==""){
+                swal(
+                        {
+                            title: 'Tiempo de producción no puedo estar vacío',
+                            type: 'warning',
+                            showCancelButton: false,
+                            confirmButtonText: 'OK',
+                            cancelButtonText: 'NO',
+                            closeOnConfirm: true,
+                            closeOnCancel: false
+                        });
             }else{
 
                   var existe=true;  
