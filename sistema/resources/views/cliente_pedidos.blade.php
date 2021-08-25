@@ -24,8 +24,8 @@
                 <div class="tab-pane active" id="tabAprobados" style="padding-top: 5px">
                     <table id="tablaAprobados" class="pedidos table table-condensed" style="width:100%">
                         <thead>
-                            <th style="width:100px">Pedido</th>
-                            <th></th>
+                            <th style="width:20px;text-align: center;">Pedido</th>
+                            <th style="width: 60px;text-align: left;"></th>
                             <th style="width:80px">Estado</th>
                             <th>Fecha Creación</th>
                             <th>Cliente</th>
@@ -63,9 +63,10 @@
                                         @if ( $item->certificado==1 )  
                                             <span><img src="{{ asset('/') }}img/iconos/certificado.png" border="0"></span>
                                         @endif
-                                        @if ( $item->salida==1 )
-                                        <span><img src="{{ asset('/') }}img/iconos/enTransporte.png" border="0" onclick="verUbicacionGmaps('{{ $item->Patente }}');" style="cursor:pointer; cursor: hand"></span>                                      
-                                        @endif  
+            
+                                        @if ($item->modificado>0)
+                                        <span class="badge badge-primary">{{$item->modificado}}</span>
+                                         @endif     
                                         @if ($item->tipoTransporte==2)
                                             <span class="badge badge-danger" title="Pedido Mixto">M</span>
                                         @endif    
@@ -97,6 +98,8 @@
                                 <th>Obra/Planta</th>
                                 <th>Fecha de Entrega</th>
                                 <th>Total ($)</th>
+                                <th>Cantidad</th>
+                                <th>Unidad</th>
                             </thead>
                             <tbody>
                             @foreach($listaPedidoSinAprobarClientes as $item)
@@ -111,11 +114,8 @@
                                     <td style="width: 120px">{{ $item->Obra }}</td>
                                     <td style="width: 120px">{{ $item->fechaEntrega }}</td>
                                     <td style="width: 120px">{{ number_format($item->total, 0, ",", ".") }}</td>
-
-
-
-                                    
-                                  
+                                    <td style="width: 120px">{{ $item->cantidad }}</td>
+                                    <td style="width: 120px">{{ $item->u_abre }}</td>
                                     
                                 </tr>
 

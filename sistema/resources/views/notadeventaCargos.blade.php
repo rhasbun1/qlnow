@@ -100,6 +100,11 @@
     <script src="js/syncfusion/ej.web.all.min.js"> </script>
     <script src="{{ asset('/') }}js/syncfusion/lang/ej.culture.de-DE.min.js"></script>
 
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+
+    <script src="//cdn.datatables.net/plug-ins/1.10.12/sorting/datetime-moment.js"></script>
+
+
 
 
     <!-- Timepicker -->
@@ -253,7 +258,7 @@
             $("#mdProcesando").modal('show');
         }      
 		$(document).ready(function() {
-
+            $.fn.dataTable.moment('DD/MM/YYYY HH:mm:ss');
             var hoy = new Date();
             hoy.setDate(hoy.getDate() - 3);
 

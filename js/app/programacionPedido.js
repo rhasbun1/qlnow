@@ -627,6 +627,7 @@ function asignarFolio(){
                     }
                     document.getElementById('btnGuardarProgramacion').style.display="none";
                     document.getElementById('btnAsignarGuia').style.display="none";
+                    abrirGuia(1, dato.nuevaGuia, fila );     
                 }else{
                     document.getElementById("btnAsignarGuia").disabled=false;                      
                     abrirGuia(1, dato.nuevaGuia, fila );                    

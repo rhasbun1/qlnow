@@ -194,11 +194,26 @@
 @endsection
 
 @section('javascript')
+    <!-- Datepicker -->
+    <script src="{{ asset('/') }}js/bootstrap-datepicker.min.js"></script>
+<script src="{{ asset('/') }}locales/bootstrap-datepicker.es.min.js"></script>  
+<!-- Bootstrap -->
+<script src="{{ asset('/') }}bootstrap/js/bootstrap.js"></script>
 
+<script src="{{ asset('/') }}js/dataTables.buttons.min.js"></script>
+<script src="{{ asset('/') }}js/buttons.html5.min.js"></script>
+
+
+    <!-- Timepicker -->
+    <script src="{{ asset('/') }}js/bootstrap-timepicker.min.js"></script> 
+    <!-- <script src="https://cdn.datatables.net/fixedcolumns/3.2.5/js/dataTables.fixedColumns.min.js"></script>  -->
     <script src="{{ asset('/') }}js/app/funciones.js"></script>
-    <script src="{{ asset('/') }}js/app/guiaDespacho.js"></script>
-    
-    <script src="https://cdn.datatables.net/fixedcolumns/3.2.5/js/dataTables.fixedColumns.min.js"></script>
+    <script src="js/syncfusion/ej.web.all.min.js"> </script>
+    <script src="{{ asset('/') }}js/syncfusion/lang/ej.culture.de-DE.min.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+
+    <script src="//cdn.datatables.net/plug-ins/1.10.12/sorting/datetime-moment.js"></script>
 
     <script>
         
@@ -365,6 +380,7 @@
 
 
         $(document).ready(function() {
+         
             // Setup - add a text input to each footer cell
 
             // DataTable
@@ -391,7 +407,7 @@
             
             } );
 
-                        
+            $.fn.dataTable.moment('DD/MM/YYYY HH:mm:ss');    
             var table=$('#tablaAprobados').DataTable({
                  orderCellsTop: true,
                  fixedHeader: true,         
@@ -407,7 +423,8 @@
                         }
                     },                
                     'pageLength'
-                ],                  
+                ],
+                              
                 "order": [[ 1, "desc" ]],                        
                 language:{url: "{{ asset('/') }}locales/datatables_ES.json"},
                 initComplete: function () {
