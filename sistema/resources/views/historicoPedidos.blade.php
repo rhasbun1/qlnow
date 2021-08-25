@@ -546,7 +546,7 @@
                                 dato[x].emp_nombre,
                                 dato[x].nombreObra,
                                 dato[x].prod_nombre,
-                                dato[x].cantidadReal,
+                                number_format(dato[x].cantidadReal,0, ',', '.'),
                                 dato[x].unidad,
                                 dato[x].fechaEntrega,
                                 dato[x].fechaHoraSalida,
@@ -634,6 +634,7 @@
         }        
 
         $(document).ready(function() {
+            
             var hoy = new Date();
             var dd = hoy.getDate();
             var mm = hoy.getMonth()+1;
@@ -727,8 +728,8 @@
                    
                 ],                        
                 "order": [[ 0, "desc" ]],                       
-                language:{ url: "{{ asset('/') }}locales/datatables_ES.json",
-                           "decimal": ","},
+                language:{url: "{{ asset('/') }}locales/datatables_ES.json","decimal": ",",
+                        "thousands": "."},
                 preDrawCallback: function( settings ) {
                     document.getElementById('panelBody').style.display="block";
                   },

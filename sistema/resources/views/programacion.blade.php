@@ -182,7 +182,7 @@
                                             <td style="width:100px">
                                                 {{$item->prod_nombre}} 
                                             </td>
-                                            <td style="width:50px;text-align: right;">{{ number_format( $item->cantidad, 0, ',', ',' ) }}</td>
+                                            <td style="width:50px;text-align: right;">{{ number_format( $item->cantidad, 0, ',', '.' ) }}</td>
                                             <td style="width:50px">{{ $item->u_abre }}</td>
                                             <td style="width:50px">{{ $item->nombrePlanta }}</td>
                                             
@@ -235,7 +235,7 @@
                                                     <span class="badge badge-danger">M</span>
                                                 @endif                                             
                                             </td>
-                                            <td style="text-align: right;">{{ number_format( $item->cantidad, 0, ',', ',' ) }}</td>
+                                            <td style="text-align: right;">{{ number_format( $item->cantidad, 0, ',', '.' ) }}</td>
                                             <td>{{ $item->nombrePlanta }}</td>
                                             <td>{{ $item->formaEntrega }}</td>
                                             <td>{{ $item->fechaEntrega }}</td>
@@ -595,7 +595,7 @@
                                     dato[x].nombreCliente,
                                     dato[x].nombreObra,
                                     dato[x].prod_nombre,
-                                    dato[x].cantidad,
+                                    number_format( dato[x].cantidad, 0, ',', '.' ) ,
                                     dato[x].u_abre,
                                     dato[x].nombrePlanta,
                                     dato[x].fechaEntrega +' '+ dato[x].horarioEntrega,
@@ -905,7 +905,8 @@
             var titulo="Pedidos en Proceso";
             var table=$('#tablaAprobados').DataTable({
                  orderCellsTop: true,
-                 fixedHeader: true,         
+                 fixedHeader: true,
+                 "orderClasses": false,         
                 "lengthMenu": [[-1, 6, 12, 20], ["Todos", "6", "12", "20"]],
                 dom: 'Bfrtip',
                 "scrollX": true,
@@ -948,7 +949,8 @@
                     }
                 ],                  
                 "order": [[ 0, "asc" ]],                        
-                language:{url: "{{ asset('/') }}locales/datatables_ES.json"},
+                language:{url: "{{ asset('/') }}locales/datatables_ES.json","decimal": ",",
+                        "thousands": "."},
                 preDrawCallback: function( settings ) {
                     document.getElementById('panelBody').style.display="block";
                   },                
