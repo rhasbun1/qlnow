@@ -348,7 +348,7 @@
                     success:function(dato){
                         swal(
                         {
-                            title: 'El pedido ha sido suspendido!!' ,
+                            title: 'el pedido ha sido suspendido!!' ,
                             text: '',
                             type: 'warning',
                             showCancelButton: false,
