@@ -105,7 +105,7 @@ class SendReminderEmails extends Command
         }elseif($id==4){
           $tipo="Pedidos aprobados";
         }
-        if($usuario->correo_avisoDespacho=1){
+        if($usuario->correo_avisoDespacho==1){
         Mail::to($usuario->usu_email)->send(new enviarMailPedidoCreado($pedido,$tipo,$usuario));
         }
     }

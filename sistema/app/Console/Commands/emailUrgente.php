@@ -131,7 +131,7 @@ class emailUrgente extends Command
             }elseif($tipoCorreo==9 && $item->idEstadoMail==9){
               $mensaje="Se ha pasado a historico el pedido ".$item->idPedido." para el cliente ".$item->emp_nombre." por el motivo ".$item->motivo;
             }
-          if($usuarios->correo_novedades=1){
+          if($usuarios->correo_novedades==1){
           Mail::to($usuario->usu_email)->send(new PedidosUrgentes($mensaje,$usuario));
           }
         }
