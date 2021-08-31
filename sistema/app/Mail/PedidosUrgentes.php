@@ -13,15 +13,17 @@ class PedidosUrgentes extends Mailable
     use Queueable, SerializesModels;
 
     protected $mensaje;
+    protected $usuario;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($mensaje)
+    public function __construct($mensaje,$usuario)
     {
         $this->mensaje = $mensaje;
+        $this->usuario = $usuario;
     }
 
     /**
@@ -31,6 +33,6 @@ class PedidosUrgentes extends Mailable
      */
     public function build()
     {
-        return $this->markdown('formatosEmail.PedidosUrgentes')->with('mensaje', $this->mensaje);
+        return $this->markdown('formatosEmail.PedidosUrgentes')->with('mensaje', $this->mensaje)->with('usuario', $this->usuario);
     }
 }

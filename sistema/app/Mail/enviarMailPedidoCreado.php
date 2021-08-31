@@ -16,6 +16,7 @@ class enviarMailPedidoCreado extends Mailable implements ShouldQueue
 
     protected $pedido;
     protected $tipo;
+    protected $usuario;
 
     /**
      * Create a new message instance.
@@ -25,13 +26,15 @@ class enviarMailPedidoCreado extends Mailable implements ShouldQueue
     public function store(Request $request)
     {
         $pedido = $request->idPedido;      
-        $tipo = $request->tipo;      
+        $tipo = $request->tipo;     
+        $usuario = $request->usuario; 
     }
 
-    public function __construct($pedido,$tipo)
+    public function __construct($pedido,$tipo,$usuario)
     {
         $this->pedido = $pedido;
         $this->tipo = $tipo;
+        $this->usuario = $usuario;
     }
 
     /**
@@ -41,6 +44,6 @@ class enviarMailPedidoCreado extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->markdown('formatosEmail.pedidoCreado')->with('pedido', $this->pedido)->with('tipo', $this->tipo);
+        return $this->markdown('formatosEmail.pedidoCreado')->with('pedido', $this->pedido)->with('tipo', $this->tipo)->with('usuario', $this->usuario);
     }
 }

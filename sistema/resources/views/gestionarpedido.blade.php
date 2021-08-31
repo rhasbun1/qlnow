@@ -138,12 +138,15 @@
                                     <td>{{ $item->u_nombre }}</td>
                                     <td align="right">{{number_format($item->saldo, 0, ',', '.') }}</td>
                                     <td aling="right"><input class="form-control input-sm" onblur="verificarCantidad(this);" onkeypress="return isIntegerKey(event)" maxlength="6" ></td>
+                                    @if( Session::get('idPerfil')=='5' || Session::get('idPerfil')=='7' || Session::get('idPerfil')=='3' || Session::get('idPerfil')=='18' || Session::get('idPerfil')=='2' || Session::get('idPerfil')=='4' )   
                                     <td>
-                                            
-                                                <select disabled  id="selectPlanta" class="selectPlanta{{ $item->prod_codigo }} form-control input-sm">
-                                                
-                                                </select>                                    
+                                        <select id="selectPlanta" class="selectPlanta{{ $item->prod_codigo }} form-control input-sm"></select>                                    
                                     </td>
+                                    @else
+                                    <td>
+                                        <select disabled id="selectPlanta" class="selectPlanta{{ $item->prod_codigo }} form-control input-sm"></select>                                    
+                                    </td>
+                                    @endif
                                     <td>
                                             @if($item->idFormaEntrega==2)
                                                 <select id="pruebacarga" class="form-control input-sm">
@@ -238,15 +241,15 @@
                                         <td aling="right" style="width:40px">
                                             <input class="form-control input-sm" onblur="verificarCantidad(this);" maxlength="6" onkeypress="return isIntegerKey(event)" >
                                         </td>
-                                        <td style="width:80px">
-                                         
-                                            <select disabled  id="selectPlanta"  class="selectPlanta{{ $item->prod_codigo }} form-control input-sm" > 
-
-                                    
-                                                
-                                            </select>    
-                                                                           
+                                        @if( Session::get('idPerfil')=='5' || Session::get('idPerfil')=='7' || Session::get('idPerfil')=='3' || Session::get('idPerfil')=='18' || Session::get('idPerfil')=='2' || Session::get('idPerfil')=='4' )   
+                                        <td>
+                                            <select id="selectPlanta" class="selectPlanta{{ $item->prod_codigo }} form-control input-sm"></select>                                    
                                         </td>
+                                        @else
+                                        <td>
+                                            <select disabled id="selectPlanta" class="selectPlanta{{ $item->prod_codigo }} form-control input-sm"></select>                                    
+                                        </td>
+                                        @endif
                                         <td style="width:80px">
                                             @if($item->idFormaEntrega==2)
                                                 <select id="pruebacarga" class="form-control input-sm">

@@ -17,7 +17,7 @@
 			<b>Indique que notificaciones desea recibir por correo:</b>
 			<br>
 			<div style="padding-top: 20px">
-				<label style="width:120px">Aviso de Despacho</label>
+				<label style="width:120px">Aviso pedidos agrupados</label>
 				@if($datosUsuario[0]->avisoDespacho==1)
 					<input type="checkbox" class="chk" id="despacho" checked>
 				@else
@@ -26,7 +26,7 @@
 				<span class="custom-checkbox"></span> 
 			</div>
 			<div style="padding-top: 10px">
-				<label style="width:120px">Novedades</label>
+				<label style="width:120px">Pedidos Urgentes</label>
 				@if($datosUsuario[0]->novedades==1)
 					<input type="checkbox" class="chk" id="novedades" checked>
 				@else

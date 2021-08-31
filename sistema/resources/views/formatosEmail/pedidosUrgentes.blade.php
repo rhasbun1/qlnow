@@ -13,5 +13,6 @@
   	<h4>Estimados,<br><br>
 	<h2>{{$mensaje}}</h2>
 	</h4>
+
   </body>
 </html>
