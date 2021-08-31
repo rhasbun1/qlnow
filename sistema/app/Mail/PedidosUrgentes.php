@@ -33,6 +33,6 @@ class PedidosUrgentes extends Mailable
      */
     public function build()
     {
-        return $this->markdown('formatosEmail.PedidosUrgentes')->with('mensaje', $this->mensaje)->with('usuario', $this->usuario);
+        return $this->markdown('formatosEmail.pedidosUrgentes')->with('mensaje', $this->mensaje)->with('usuario', $this->usuario);
     }
 }
