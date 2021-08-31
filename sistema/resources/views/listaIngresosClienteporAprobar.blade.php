@@ -96,7 +96,7 @@
                             </td>
                             <td style="width: 30px">
                                 @if ($item->tipoTransporte==2)
-                                    <span class="badge badge-danger">M</span>
+                                    <span style="    background-color: #fc8675; color: #fff;" class="badge badge-danger">M</span>
                                 @endif
                             </td>                         
                             <td>{{ $fecha }}</td>

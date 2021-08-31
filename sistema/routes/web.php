@@ -40,6 +40,8 @@ Route::group(['middleware' => 'checksession'], function () {
 	Route::post('usuarioPlantas', 'UsuarioController@usuarioPlantas');
 	Route::post('usuarioAvisosCorreo', 'UsuarioController@usuarioAvisosCorreo');
 
+	Route::get('usuarioApagarNotificaciones', 'UsuarioController@usuarioApagarNotificaciones');
+
 	Route::post('agregarObra', 'ObraController@agregarObra');
 	Route::post('listarObras', 'ObraController@listarObras');
 	Route::post('eliminarObra', 'ObraController@eliminarObra');

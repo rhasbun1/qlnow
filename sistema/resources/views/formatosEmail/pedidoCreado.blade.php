@@ -19,7 +19,7 @@
         | {{ $item->idPedido }} | {{ $item->emp_nombre }} |
         @endforeach
         @endcomponent
-
+      
 		
 	</h4>
   </body>

@@ -119,5 +119,10 @@ class UsuarioController extends Controller
            return $usuario;
         }      
     }
+    public function usuarioApagarNotificaciones(Request $datos){
+        $usuario=DB::Select('call spUpdNotificaciones(?)', array($datos->codigo) );
+        echo '<script>alert("Las notificaciones por correo fueran apagadas")</script>';
+        return view('login');
+    }
 
 }

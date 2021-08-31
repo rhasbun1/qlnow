@@ -669,6 +669,7 @@
               
             }
         }
+        /*
         if(verificarRetiro==1){
             if(verificadorFlete==0){
                 swal(
@@ -695,6 +696,7 @@
                 return;
             }
         }
+        */
         
         var ind1=0;
         var ind2=0;

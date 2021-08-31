@@ -44,34 +44,70 @@ class SendReminderEmails extends Command
      */
     public function handle()
     {
-      $usuarios = ["nbastias@spsgroup.cl","raisotoprogra@gmail.com"];
-      
-        for ($i = 1; $i <= 4; $i++) {
-          $pedidosCreados = DB::Select('call spGetPedidosCorreo(?)',array(
-              $i
-          ));
-          foreach($usuarios as $item){
-            if(!empty($pedidosCreados)){
-              $this->emailPedidoCreado($pedidosCreados,$i,$item);
-            }
-          }
+      //$usuarios = ["nbastias@spsgroup.cl","raisotoprogra@gmail.com"]; 
+      $todosUsuarios =  DB::Select('call spGetUsuarios()');
+      $usuariosGerente = DB::Select('call spGetUsuarioPerfilesEmail(?)',array(2));
+      $usuariosEjecutivoCredito = DB::Select('call spGetUsuarioPerfilesEmail(?)',array(11));
+
+      $pedidosCreados = DB::Select('call spGetPedidosCorreo(?)',array(
+        1
+      ));
+      $pedidosAprobadosParaCliente = DB::Select('call spGetPedidosCorreo(?)',array(
+        3
+      ));
+      $pedidosAprobados = DB::Select('call spGetPedidosCorreo(?)',array(
+        4
+      ));
+      //tipo 1
+      foreach($usuariosGerente as $item){
+        if(!empty($pedidosCreados)){
+          $this->emailPedidoCreado($pedidosCreados,1,$item);
         }
+      }
+	  //tipo 2
+      foreach($todosUsuarios as $item){
+        $pedidosCreadoCliente = DB::Select('call spGetPedidosCorreoCreadoPorCliente(?)',array(
+          $item->usu_codigo
+        ));
+        if(!empty($pedidosCreadoCliente)){
+          $this->emailPedidoCreado($pedidosCreadoCliente,2,$item);
+        }
+      }
+      //tipo 3
+      foreach($usuariosGerente as $item){
+        if(!empty($pedidosAprobadosParaCliente)){
+          $this->emailPedidoCreado($pedidosAprobadosParaCliente,3,$item);
+        }
+      }
+      //tipo 4
+      foreach($usuariosEjecutivoCredito as $item){
+        if(!empty($pedidosAprobados)){
+          $this->emailPedidoCreado($pedidosAprobados,4,$item);
+        }
+      }
+      
+
+
+
+    
     }
 
 
     private function emailPedidoCreado($pedido,$id,$usuario)
     {
+
         if($id==1){
-          $tipo="Hola xxxx, tienes nuevos pedidos para ser aprobados de crédito. Ingresa por favor a qlnow.quimicalatinoamericana.cl para gestionarlos";
+          $tipo="Hola ".$usuario->usu_nombre.", tienes nuevos pedidos para ser aprobados de crédito. Ingresa por favor a qlnow.quimicalatinoamericana.cl para gestionarlos";
         }elseif($id==2){
-          $tipo="Hola, tu cliente  ha subido nuevos pedidos a QL now! y requieren tu atención. Ingresa por favor a qlnow.quimicalatinoamericana.cl para gestionarlos.";
+          $tipo="Hola ".$usuario->usu_nombre." tu cliente ha subido nuevos pedidos a QL now! y requieren tu atención. Ingresa por favor a qlnow.quimicalatinoamericana.cl para gestionarlos.";
         }elseif($id==3){
-          $tipo="Pedidos aprobados para el cliente";
+          $tipo="Pedidos aprobados para clientes";
         }elseif($id==4){
           $tipo="Pedidos aprobados";
         }
-
-        Mail::to($usuario)->send(new enviarMailPedidoCreado($pedido,$tipo));
+        if($usuario->correo_avisoDespacho=1){
+        Mail::to($usuario->usu_email)->send(new enviarMailPedidoCreado($pedido,$tipo,$usuario));
+        }
     }
 
 }
