@@ -546,7 +546,7 @@
                                 dato[x].emp_nombre,
                                 dato[x].nombreObra,
                                 dato[x].prod_nombre,
-                                number_format(dato[x].cantidadReal,0, ',', '.'),
+                                dato[x].cantidadReal,
                                 dato[x].unidad,
                                 dato[x].fechaEntrega,
                                 dato[x].fechaHoraSalida,
