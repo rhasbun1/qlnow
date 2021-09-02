@@ -208,6 +208,7 @@
     <script src="{{ asset('/') }}js/bootstrap-timepicker.min.js"></script> 
     <!-- <script src="https://cdn.datatables.net/fixedcolumns/3.2.5/js/dataTables.fixedColumns.min.js"></script>  -->
     <script src="{{ asset('/') }}js/app/funciones.js"></script>
+    <script src="{{ asset('/') }}js/app/guiaDespacho.js"></script>
     <script src="js/syncfusion/ej.web.all.min.js"> </script>
     <script src="{{ asset('/') }}js/syncfusion/lang/ej.culture.de-DE.min.js"></script>
 
