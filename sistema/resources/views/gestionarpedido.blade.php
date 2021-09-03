@@ -220,6 +220,7 @@
                             <th style="width:80px">Planta de Origen</th>
                             <th style="width:80px">Forma de Entrega</th>                            
                             <th style="width:80px"></th>
+                            <th style="width:80px;"></th>
                         </thead>
                         <tbody>
                             @foreach($NotadeVentaDetalle as $item)
@@ -275,6 +276,8 @@
                                             <button class="btn btn-warning btn-sm" onclick="ocultarFila(this.parentNode.parentNode.rowIndex);">
                                                 <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
                                             </button>
+                                        </td>
+                                        <td style="display: none">
                                         </td>
                                        
                                     </tr>
