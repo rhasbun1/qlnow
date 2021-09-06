@@ -72,7 +72,7 @@ class PedidoController extends Controller
     // Vista por pedido para los usuarios Ejecutivos de Crédito    
     public function listaPedidos(){
         if( Session::get('idPerfil')=='11' ){
-            $pedidos=DB::Select('call spGetProductosconPedidoPendiente(?,?,?)', array(0, Session::get('idUsuario'), Session::get('idPerfil')  ) );
+            $pedidos=DB::Select('call spGetPedidos');
         }else{
             $pedidos=DB::Select('call spGetProductosconPedidoPendiente(?,?,?)', array(0, Session::get('idUsuario'), Session::get('idPerfil')  ) );
         }
