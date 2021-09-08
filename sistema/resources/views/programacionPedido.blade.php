@@ -169,20 +169,20 @@
                                 {{ $item->nombrePlanta }}
                             @else
                             @if(  $item->numeroGuia==0 && ( Session::get('idPerfil')=='8' || Session::get('idPerfil')=='5' || Session::get('idPerfil')=='7' || Session::get('idPerfil')=='3' || Session::get('idPerfil')=='18' || Session::get('idPerfil')=='2' || Session::get('idPerfil')=='4' ) )
-                            <select  id="idPlanta" class="form-control input-sm">  
+                            <select id="idPlanta" class="selectPlanta{{ $item->prod_codigo }} form-control input-sm"></select>                                    
                             @else
-                            <select disabled id="idPlanta" class="form-control input-sm">  
+                            <select id="idPlanta" class="selectPlanta{{ $item->prod_codigo }} form-control input-sm"></select>                                    
                             @endif
-                                @foreach($plantas as $planta)
-                                    @if( $item->nombrePlanta==$planta->nombre )
-                                        <option value="{{ $planta->idPlanta }}" selected>{{ $planta->nombre }}</option>
-                                    @else
-                                        <option value="{{ $planta->idPlanta }}">{{ $planta->nombre }}</option>
-                                    @endif    
-                                @endforeach
+                      
                             </select>
                             @endif
                         </td>
+                        <script  type="text/javascript"> 
+                            setTimeout(() => {
+                                val = plantaspedidos("{{ $item->prod_nombre }}","{{$item->u_nombre}}","{{ $item->prod_codigo }}");
+
+                            }, 5000);
+                        </script>
 
                         <td style="width:70px"> {{ $item->nombreFormaEntrega }} </td>
                         @if ( $item->numeroGuia==0 and $pedido[0]->bloqueado==0)
@@ -495,6 +495,27 @@
             document.getElementById('obsDespachoParcial').value='';
             $("#mdDespachoParcial").modal('show');
 
+        }
+
+        function plantaspedidos(nombrePlanta,unidad,codigo,idplanta){
+            $.ajax({
+                async:false, 
+                url: urlApp + 'plantaspedidos',
+                headers: { 'X-CSRF-TOKEN' : $("#_token").val() },
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    nomPlanta:nombrePlanta,
+                    unidad:unidad
+                },
+                success:function(dato){
+                    console.log("salida de datos",dato);
+                    $(dato).each(function(i, v){ // indice, valor
+                        $(".selectPlanta"+codigo).append('<option value="' + v.idPlanta + '">' + v.nombre + '</option>');
+                    })
+
+                }
+            }); 
         }
 
 
