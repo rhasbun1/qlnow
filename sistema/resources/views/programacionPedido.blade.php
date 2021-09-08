@@ -168,7 +168,7 @@
                             @if( Session::get('idPerfil')=='8' )
                                 {{ $item->nombrePlanta }}
                             @else
-                            @if( Session::get('idPerfil')=='8' || Session::get('idPerfil')=='7' )
+                            @if(  $item->numeroGuia==0 && ( Session::get('idPerfil')=='8' || Session::get('idPerfil')=='5' || Session::get('idPerfil')=='7' || Session::get('idPerfil')=='3' || Session::get('idPerfil')=='18' || Session::get('idPerfil')=='2' || Session::get('idPerfil')=='4' ) )
                             <select  id="idPlanta" class="form-control input-sm">  
                             @else
                             <select disabled id="idPlanta" class="form-control input-sm">  
