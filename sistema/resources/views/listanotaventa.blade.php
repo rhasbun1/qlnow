@@ -225,7 +225,7 @@
                     "lengthMenu": [[6, 12, 20, -1], ["6", "12", "20", "Todos"]],
                     dom: 'Bfrtip',
                     buttons: [
-                    
+                        'pageLength',   
                         {
                             text: 'Nueva Nota',
                             className: 'orange',

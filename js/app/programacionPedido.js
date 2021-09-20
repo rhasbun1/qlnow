@@ -489,6 +489,7 @@ function asignarFolio(){
     var transporte = "";
     var camion = "";
     var conductor = "";
+    var plantaElegida = "";
     var contador = 1;
     for (var i = 1; i < tabla.rows.length; i++){
         if(tabla.rows[i].cells[12].getElementsByTagName('input')[0]){
@@ -520,11 +521,30 @@ function asignarFolio(){
         
                                     return;                   
                                  }
+
+                                 if(plantaElegida!=tabla.rows[i].cells[4].getElementsByTagName('select')[0].value.trim()){
+        
+                                    swal(
+                                        {
+                                            title: 'los datos de planta deben ser los mismos!!' ,
+                                            text: '',
+                                            type: 'warning',
+                                            showCancelButton: false,
+                                                confirmButtonText: 'OK',
+                                            cancelButtonText: '',
+                                            closeOnConfirm: true,
+                                            closeOnCancel: false
+                                        });
+                                        document.getElementById("btnAsignarGuia").disabled=false;
+            
+                                        return;                   
+                                     }
                             
                         }
                         transporte = tabla.rows[i].cells[6].getElementsByTagName('select')[0].value.trim();
                         camion =tabla.rows[i].cells[7].getElementsByTagName('select')[0].value.trim();
                         conductor =tabla.rows[i].cells[9].getElementsByTagName('select')[0].value.trim();
+                        plantaElegida = tabla.rows[i].cells[4].getElementsByTagName('select')[0].value.trim();
                         contador++;
     
                     }
@@ -548,11 +568,29 @@ function asignarFolio(){
         
                                     return;                   
                                  }
+                                 if(plantaElegida!=tabla.rows[i].cells[4].getElementsByTagName('select')[0].value.trim()){
+        
+                                    swal(
+                                        {
+                                            title: 'los datos de planta deben ser los mismos!!' ,
+                                            text: '',
+                                            type: 'warning',
+                                            showCancelButton: false,
+                                                confirmButtonText: 'OK',
+                                            cancelButtonText: '',
+                                            closeOnConfirm: true,
+                                            closeOnCancel: false
+                                        });
+                                        document.getElementById("btnAsignarGuia").disabled=false;
+            
+                                        return;                   
+                                     }
                             
                         }
                         transporte = tabla.rows[i].cells[6].getElementsByTagName('input')[0].value.trim();
                         camion =tabla.rows[i].cells[7].getElementsByTagName('input')[0].value.trim();
                         conductor =tabla.rows[i].cells[9].getElementsByTagName('input')[0].value.trim();
+                        plantaElegida = tabla.rows[i].cells[4].getElementsByTagName('select')[0].value.trim();
                         contador++;
     
                     }
