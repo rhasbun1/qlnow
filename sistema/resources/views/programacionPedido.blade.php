@@ -113,6 +113,7 @@
                     <th style="width:70px">Hora prog. Carga</th>
                     <th style="width:70px">Select./<br>Guía</th>
                     <th style="display: none;"></th>
+                    <th style="display: none;"></th>
                 </thead>
             
                 <tbody>
@@ -303,6 +304,9 @@
                                 @else
                                     <p style="color:#FF0000";><b>No existe en lista de precios</b></p>
                                 @endif
+                            </td>
+                            <td style="display:none;" class="este">
+                                {{$item->idPlanta}}
                             </td>
 
                         @else    
@@ -511,8 +515,19 @@
                 success:function(dato){
                     console.log("salida de datos",dato);
                     $(dato).each(function(i, v){ // indice, valor
+                                        
                         $(".selectPlanta"+codigo).append('<option value="' + v.idPlanta + '">' + v.nombre + '</option>');
                     })
+                    var tabla = document.getElementById("tablaDetalle");
+                    var numero = tabla.rows[1].cells[13].innerHTML.trim()
+                    for (var x = 1; x < tabla.rows.length; x++){
+                        var numero = tabla.rows[x].cells[13].innerHTML.trim();
+                       tabla.rows[x].cells[4].getElementsByTagName('select')[0].value=numero;
+                        
+                    }
+                   // $(".selectPlanta"+codigo).val($(".selectPlanta"+codigo).closest('.este').text());
+                 
+
 
                 }
             }); 
