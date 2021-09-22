@@ -172,7 +172,7 @@
                             @if(  $item->numeroGuia==0 && ( Session::get('idPerfil')=='8' || Session::get('idPerfil')=='5' || Session::get('idPerfil')=='7' || Session::get('idPerfil')=='3' || Session::get('idPerfil')=='18' || Session::get('idPerfil')=='2' || Session::get('idPerfil')=='4' ) )
                             <select id="idPlanta" class="selectPlanta{{ $item->prod_codigo }} form-control input-sm"></select>                                    
                             @else
-                            <select id="idPlanta" class="selectPlanta{{ $item->prod_codigo }} form-control input-sm"></select>                                    
+                            <select disabled id="idPlanta" class="selectPlanta{{ $item->prod_codigo }} form-control input-sm"></select>                                    
                             @endif
                       
                             </select>
@@ -326,6 +326,9 @@
                                 <td style="display: none;">{{ $item->horaCarga }}</td>                     
                             @endif    
                             <td></td>
+                            <td style="display:none;" class="este">
+                                {{$item->idPlanta}}
+                            </td>
                         @endif    
                         <td style="display: none;">{{$item->tipoTransporte}}</td>
 
