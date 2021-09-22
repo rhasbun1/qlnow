@@ -555,7 +555,9 @@
             
                 }
         
-                if(dato > $("#cmgttm1").val()){
+                if(parseInt(dato) > parseInt($("#cmgttm1").val())){
+                    console.log("dato: "+dato);
+                    console.log("cmgttm1: "+$("#cmgttm1").val());
                     swal(
                     {
                         title: 'El primer producto seleccionado no puede ser mayor a '+$("#cmgttm1").val()+' toneladas',
@@ -578,7 +580,7 @@
                     return;
                 
                 }
-                if((parseFloat(dato1)) > $("#cmgttm2").val()){
+                if((parseInt(dato1)) > parseInt($("#cmgttm2").val())){
                     swal(
                     {
                         title: 'El segundo producto seleccionado no puede ser mayor a '+$("#cmgttm2").val()+' toneladas',
